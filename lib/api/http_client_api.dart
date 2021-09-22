@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 import 'package:lily_searcher/api/i_http_client_api.dart';
-import 'package:simple_logger/src/simple_logger.dart';
+import 'package:simple_logger/simple_logger.dart';
 
 /// Http client api class
 class HttpClientApi implements IHttpClientApi {
