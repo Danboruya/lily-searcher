@@ -8,14 +8,20 @@ part of 'word_search_model.dart';
 
 _$_WordSearchModel _$$_WordSearchModelFromJson(Map<String, dynamic> json) =>
     _$_WordSearchModel(
-      results: json['results'] as Map<String, dynamic>,
-      resultList: (json['resultList'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
-          .toList(),
+      uri: json['uri'] as String,
+      key: json['key'] as String,
+      name: json['name'] as String,
+      nameKana: json['nameKana'] as String,
+      garden: json['garden'] as String?,
+      position: json['position'] as String?,
     );
 
 Map<String, dynamic> _$$_WordSearchModelToJson(_$_WordSearchModel instance) =>
     <String, dynamic>{
-      'results': instance.results,
-      'resultList': instance.resultList,
+      'uri': instance.uri,
+      'key': instance.key,
+      'name': instance.name,
+      'nameKana': instance.nameKana,
+      'garden': instance.garden,
+      'position': instance.position,
     };
