@@ -3,7 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/providers/view_model_providers.dart';
-import 'package:simple_logger/src/simple_logger.dart';
+import 'package:lily_searcher/view_models/search_list_view_model.dart';
+import 'package:lily_searcher/views/widgets/exception_dialog.dart';
+import 'package:simple_logger/simple_logger.dart';
+
+import 'lily_detail_view.dart';
 
 class SearchListView extends StatelessWidget {
   const SearchListView({Key? key}) : super(key: key);
@@ -60,7 +64,8 @@ class SearchListViewer extends ConsumerWidget {
                         padding: const EdgeInsets.all(15),
                         itemCount: res.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return _repositoryTile(res[index], logger);
+                          return _repositoryTile(context, res[index], logger,
+                              searchViewModelNotifier);
                         },
                       )
                     : const Center(
@@ -86,12 +91,33 @@ class SearchListViewer extends ConsumerWidget {
     );
   }
 
-  Widget _repositoryTile(WordSearchModel res, SimpleLogger logger) {
+  Widget _repositoryTile(BuildContext context, WordSearchModel res,
+      SimpleLogger logger, SearchListViewModel viewModel) {
     return Card(
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
-        onTap: () => {
+        onTap: () async => {
           logger.finer("${res.uri} taped"),
+          logger.finer("Parameter: id:${res.key}"),
+
+          // Search for detailed information on the selected Lily
+          await viewModel.searchLilyDetail(res.key, context),
+
+          if (context.read(businessExceptionProvider).hasException)
+            {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) =>
+                    exceptionDialog(context, null),
+              ),
+            },
+
+          // Screen transition only when search results would be not null
+          if (viewModel.lily != null)
+            {
+              Navigator.of(context)
+                  .push(LilyDetailView.createPageRoute(viewModel.lily)),
+            },
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

@@ -20,7 +20,7 @@ _$_LilyModel _$$_LilyModelFromJson(Map<String, dynamic> json) => _$_LilyModel(
       isBoosted: json['isBoosted'] as bool?,
       boostedSkill: json['boostedSkill'] as String?,
       garden: json['garden'] as String?,
-      grade: json['grade'] as String?,
+      grade: json['grade'] as int?,
       legion: json['legion'] as String?,
       legionJobTitle: json['legionJobTitle'] as String?,
       position: json['position'] as String?,
@@ -30,6 +30,8 @@ _$_LilyModel _$$_LilyModelFromJson(Map<String, dynamic> json) => _$_LilyModel(
       bloodType: json['bloodType'] as String?,
       lifeStatus: json['lifeStatus'] as String?,
       charm: json['charm'] as String?,
+      birthPlace: json['birthPlace'] as String?,
+      anotherName: json['anotherName'] as String?,
     );
 
 Map<String, dynamic> _$$_LilyModelToJson(_$_LilyModel instance) =>
@@ -55,4 +57,6 @@ Map<String, dynamic> _$$_LilyModelToJson(_$_LilyModel instance) =>
       'bloodType': instance.bloodType,
       'lifeStatus': instance.lifeStatus,
       'charm': instance.charm,
+      'birthPlace': instance.birthPlace,
+      'anotherName': instance.anotherName,
     };

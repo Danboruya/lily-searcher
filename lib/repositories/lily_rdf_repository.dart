@@ -43,48 +43,8 @@ class LilyRdfRepository implements ILilyRdfRepository {
 
     StringBuffer sb = StringBuffer();
 
-    sb.writeln("PREFIX lilyrdf: <https://lily.fvhp.net/rdf/RDFs/detail/>");
-    sb.writeln("PREFIX lily: <https://lily.fvhp.net/rdf/IRIs/lily_schema.ttl#>");
-    sb.writeln("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>");
-    sb.writeln("PREFIX schema: <http://schema.org/>");
-
-    sb.writeln("SELECT ?s ?p ?o");
-    sb.writeln("WHERE {");
-    sb.writeln("    {");
-    sb.writeln("        VALUES ?s { lilyrdf:$key }");
-    sb.writeln("        ?s ?p ?o.");
-    sb.writeln("    }");
-    sb.writeln("    UNION");
-    sb.writeln("    {");
-    sb.writeln("        VALUES ?p { schema:name lily:resource lily:usedIn lily:performIn lily:additionalInformation }");
-    sb.writeln("        lilyrdf:$key ?rp ?s.");
-    sb.writeln("        ?s ?p ?o.");
-    sb.writeln("    }");
-    sb.writeln("    UNION");
-    sb.writeln("    {");
-    sb.writeln("        VALUES ?p { schema:productID schema:name rdf:type }");
-    sb.writeln("        lilyrdf:$key lily:charm/lily:resource ?s.");
-    sb.writeln("        ?s ?p ?o.");
-    sb.writeln("    }");
-    sb.writeln("    UNION");
-    sb.writeln("    {");
-    sb.writeln("        VALUES ?p { schema:name rdf:type }");
-    sb.writeln("        lilyrdf:$key lily:relationship/lily:resource ?s.");
-    sb.writeln("        ?s ?p ?o.");
-    sb.writeln("    }");
-    sb.writeln("    UNION");
-    sb.writeln("    {");
-    sb.writeln("        VALUES ?p { schema:name rdf:type }");
-    sb.writeln("        lilyrdf:$key schema:sibling/lily:resource ?s.");
-    sb.writeln("        ?s ?p ?o.");
-    sb.writeln("    }");
-    sb.writeln("    UNION");
-    sb.writeln("    {");
-    sb.writeln("        VALUES ?p { lily:genre schema:name schema:alternateName rdf:type }");
-    sb.writeln("        lilyrdf:$key lily:cast/lily:performIn ?s.");
-    sb.writeln("        ?s ?p ?o.");
-    sb.writeln("    }");
-    sb.writeln("}");
+    sb.writeln("PREFIX   lilyrdf: <https://lily.fvhp.net/rdf/RDFs/detail/>");
+    sb.writeln("DESCRIBE lilyrdf:$key");
 
     String query = sb.toString();
     var queryHeader = 'https://lily.fvhp.net/sparql/query';

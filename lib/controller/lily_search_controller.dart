@@ -48,7 +48,7 @@ class LilySearchController implements ILilySearchController {
             key: item['lily']['value'].split("/").last,
             name: item['name']['value'],
             nameKana: item['nameKana']['value'],
-            garden: item['garden']['value'],
+            garden: item['garden']['value'] ?? '不明',
             position: pos));
       }
 
@@ -70,36 +70,56 @@ class LilySearchController implements ILilySearchController {
     late LilyModel resModel;
     Map<String, dynamic> tmp = {};
     // List has value only when response has list of map
-    if (res['results']['bindings'].length != 0) {
-      for (final item in res['results']['bindings']) {
-        String objective = "";
+    if (res['@graph'].length != 0) {
+      tmp = res['@graph'].last;
 
-        if (item['o']['xml:lang'] != "" && item['o']['xml:lang'] != "ja") {
-          objective = '#${item['o']['value']}';
-        } else {
-          objective = item['o']['value'];
-        }
-
-        if (tmp.containsKey(item['p']['value'])) {
-          tmp[item['p']['value'].split('/').last.split('#').last] =
-              '${tmp[item['p']['value']]}, $objective';
-        } else {
-          tmp[item['p']['value'].split('/').last.split('#').last] = objective;
-        }
-      }
+      // Extract lily's birthday
+      DateTime? birthDay = tmp['birthDate'] != null
+          ? DateTime(
+              1970,
+              int.parse(tmp['birthDate']
+                  .split('-')[tmp['birthDate'].split('-').length - 1]),
+              int.parse(tmp['birthDate']
+                  .split('-')[tmp['birthDate'].split('-').length - 2]))
+          : null;
 
       resModel = LilyModel(
         key: key,
-        name: tmp['name'],
-        nameKana: tmp['nameKana'],
-        position: tmp['position'],
-        garden: tmp['garden'],
-        age: tmp['age'] != "" ? int.parse(tmp['age']) : null,
-        birthDay: tmp.containsKey('birthDay') == true && tmp['birthDay'] != "" ?
+        name: tmp['label'],
+        nameKana: tmp['nameKana']['@value'],
+        birthDay: birthDay,
+        age: tmp['foaf:age'],
+        garden: tmp['garden'] ?? "不明",
+        position: tmp['position'] is List<dynamic>
+            ? tmp['position'].toList().join(', ')
+            : tmp['position'],
+        anotherName:
+            tmp['anotherName'] != null ? tmp['anotherName']['@value'] : null,
+        birthPlace: tmp['birthPlace'] != null
+            ? tmp['birthPlace']
+                .where((elm) => elm['@language'] == 'ja')
+                .toList()
+                .first['@value']
+            : null,
+        bloodType: tmp['bloodType'],
+        boostedSkill: tmp['boostedSkill'] is List<dynamic>
+            ? tmp['boostedSkill'].toList().join(', ')
+            : tmp['boostedSkill'],
+        grade: tmp['lily:grade'],
+        height: tmp['height'] != null ? double.tryParse(tmp['height']) : null,
+        isBoosted: tmp['lily:isBoosted'],
+        legion: tmp['legion'],
+        legionJobTitle: tmp['legionJobTitle'],
+        lifeStatus: tmp['lifeStatus'],
+        rareSkill: tmp['rareSkill'],
+        subSkill: tmp['subSkill'] is List<String>
+            ? tmp['subSkill'].join(', ')
+            : tmp['subSkill'],
+        type: tmp['@type'],
+        weight: tmp['weight'] != null ? double.parse(tmp['weight']) : null,
       );
     }
 
-    // TODO: implement detailSearch
-    throw UnimplementedError();
+    return resModel;
   }
 }

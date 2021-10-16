@@ -19,7 +19,7 @@ class LilyModel with _$LilyModel {
     bool? isBoosted,
     String? boostedSkill,
     String? garden,
-    String? grade,
+    int? grade,
     String? legion,
     String? legionJobTitle,
     String? position,
@@ -29,6 +29,8 @@ class LilyModel with _$LilyModel {
     String? bloodType,
     String? lifeStatus,
     String? charm,
+    String? birthPlace,
+    String? anotherName,
   }) = _LilyModel;
 
   factory LilyModel.fromJson(Map<String, dynamic> json) =>

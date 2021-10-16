@@ -33,7 +33,7 @@ class _$LilyModelTearOff {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -42,7 +42,9 @@ class _$LilyModelTearOff {
       double? weight,
       String? bloodType,
       String? lifeStatus,
-      String? charm}) {
+      String? charm,
+      String? birthPlace,
+      String? anotherName}) {
     return _LilyModel(
       key: key,
       name: name,
@@ -65,6 +67,8 @@ class _$LilyModelTearOff {
       bloodType: bloodType,
       lifeStatus: lifeStatus,
       charm: charm,
+      birthPlace: birthPlace,
+      anotherName: anotherName,
     );
   }
 
@@ -89,7 +93,7 @@ mixin _$LilyModel {
   bool? get isBoosted => throw _privateConstructorUsedError;
   String? get boostedSkill => throw _privateConstructorUsedError;
   String? get garden => throw _privateConstructorUsedError;
-  String? get grade => throw _privateConstructorUsedError;
+  int? get grade => throw _privateConstructorUsedError;
   String? get legion => throw _privateConstructorUsedError;
   String? get legionJobTitle => throw _privateConstructorUsedError;
   String? get position => throw _privateConstructorUsedError;
@@ -99,6 +103,8 @@ mixin _$LilyModel {
   String? get bloodType => throw _privateConstructorUsedError;
   String? get lifeStatus => throw _privateConstructorUsedError;
   String? get charm => throw _privateConstructorUsedError;
+  String? get birthPlace => throw _privateConstructorUsedError;
+  String? get anotherName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -122,7 +128,7 @@ abstract class $LilyModelCopyWith<$Res> {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -131,7 +137,9 @@ abstract class $LilyModelCopyWith<$Res> {
       double? weight,
       String? bloodType,
       String? lifeStatus,
-      String? charm});
+      String? charm,
+      String? birthPlace,
+      String? anotherName});
 }
 
 /// @nodoc
@@ -165,6 +173,8 @@ class _$LilyModelCopyWithImpl<$Res> implements $LilyModelCopyWith<$Res> {
     Object? bloodType = freezed,
     Object? lifeStatus = freezed,
     Object? charm = freezed,
+    Object? birthPlace = freezed,
+    Object? anotherName = freezed,
   }) {
     return _then(_value.copyWith(
       key: key == freezed
@@ -214,7 +224,7 @@ class _$LilyModelCopyWithImpl<$Res> implements $LilyModelCopyWith<$Res> {
       grade: grade == freezed
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       legion: legion == freezed
           ? _value.legion
           : legion // ignore: cast_nullable_to_non_nullable
@@ -251,6 +261,14 @@ class _$LilyModelCopyWithImpl<$Res> implements $LilyModelCopyWith<$Res> {
           ? _value.charm
           : charm // ignore: cast_nullable_to_non_nullable
               as String?,
+      birthPlace: birthPlace == freezed
+          ? _value.birthPlace
+          : birthPlace // ignore: cast_nullable_to_non_nullable
+              as String?,
+      anotherName: anotherName == freezed
+          ? _value.anotherName
+          : anotherName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -273,7 +291,7 @@ abstract class _$LilyModelCopyWith<$Res> implements $LilyModelCopyWith<$Res> {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -282,7 +300,9 @@ abstract class _$LilyModelCopyWith<$Res> implements $LilyModelCopyWith<$Res> {
       double? weight,
       String? bloodType,
       String? lifeStatus,
-      String? charm});
+      String? charm,
+      String? birthPlace,
+      String? anotherName});
 }
 
 /// @nodoc
@@ -317,6 +337,8 @@ class __$LilyModelCopyWithImpl<$Res> extends _$LilyModelCopyWithImpl<$Res>
     Object? bloodType = freezed,
     Object? lifeStatus = freezed,
     Object? charm = freezed,
+    Object? birthPlace = freezed,
+    Object? anotherName = freezed,
   }) {
     return _then(_LilyModel(
       key: key == freezed
@@ -366,7 +388,7 @@ class __$LilyModelCopyWithImpl<$Res> extends _$LilyModelCopyWithImpl<$Res>
       grade: grade == freezed
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       legion: legion == freezed
           ? _value.legion
           : legion // ignore: cast_nullable_to_non_nullable
@@ -403,6 +425,14 @@ class __$LilyModelCopyWithImpl<$Res> extends _$LilyModelCopyWithImpl<$Res>
           ? _value.charm
           : charm // ignore: cast_nullable_to_non_nullable
               as String?,
+      birthPlace: birthPlace == freezed
+          ? _value.birthPlace
+          : birthPlace // ignore: cast_nullable_to_non_nullable
+              as String?,
+      anotherName: anotherName == freezed
+          ? _value.anotherName
+          : anotherName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -431,7 +461,9 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
       this.weight,
       this.bloodType,
       this.lifeStatus,
-      this.charm});
+      this.charm,
+      this.birthPlace,
+      this.anotherName});
 
   factory _$_LilyModel.fromJson(Map<String, dynamic> json) =>
       _$$_LilyModelFromJson(json);
@@ -459,7 +491,7 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
   @override
   final String? garden;
   @override
-  final String? grade;
+  final int? grade;
   @override
   final String? legion;
   @override
@@ -478,10 +510,14 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
   final String? lifeStatus;
   @override
   final String? charm;
+  @override
+  final String? birthPlace;
+  @override
+  final String? anotherName;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LilyModel(key: $key, name: $name, nameKana: $nameKana, givenNameKana: $givenNameKana, age: $age, birthDay: $birthDay, rareSkill: $rareSkill, subSkill: $subSkill, isBoosted: $isBoosted, boostedSkill: $boostedSkill, garden: $garden, grade: $grade, legion: $legion, legionJobTitle: $legionJobTitle, position: $position, type: $type, height: $height, weight: $weight, bloodType: $bloodType, lifeStatus: $lifeStatus, charm: $charm)';
+    return 'LilyModel(key: $key, name: $name, nameKana: $nameKana, givenNameKana: $givenNameKana, age: $age, birthDay: $birthDay, rareSkill: $rareSkill, subSkill: $subSkill, isBoosted: $isBoosted, boostedSkill: $boostedSkill, garden: $garden, grade: $grade, legion: $legion, legionJobTitle: $legionJobTitle, position: $position, type: $type, height: $height, weight: $weight, bloodType: $bloodType, lifeStatus: $lifeStatus, charm: $charm, birthPlace: $birthPlace, anotherName: $anotherName)';
   }
 
   @override
@@ -509,7 +545,9 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
       ..add(DiagnosticsProperty('weight', weight))
       ..add(DiagnosticsProperty('bloodType', bloodType))
       ..add(DiagnosticsProperty('lifeStatus', lifeStatus))
-      ..add(DiagnosticsProperty('charm', charm));
+      ..add(DiagnosticsProperty('charm', charm))
+      ..add(DiagnosticsProperty('birthPlace', birthPlace))
+      ..add(DiagnosticsProperty('anotherName', anotherName));
   }
 
   @override
@@ -568,7 +606,13 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
                 const DeepCollectionEquality()
                     .equals(other.lifeStatus, lifeStatus)) &&
             (identical(other.charm, charm) ||
-                const DeepCollectionEquality().equals(other.charm, charm)));
+                const DeepCollectionEquality().equals(other.charm, charm)) &&
+            (identical(other.birthPlace, birthPlace) ||
+                const DeepCollectionEquality()
+                    .equals(other.birthPlace, birthPlace)) &&
+            (identical(other.anotherName, anotherName) ||
+                const DeepCollectionEquality()
+                    .equals(other.anotherName, anotherName)));
   }
 
   @override
@@ -594,7 +638,9 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
       const DeepCollectionEquality().hash(weight) ^
       const DeepCollectionEquality().hash(bloodType) ^
       const DeepCollectionEquality().hash(lifeStatus) ^
-      const DeepCollectionEquality().hash(charm);
+      const DeepCollectionEquality().hash(charm) ^
+      const DeepCollectionEquality().hash(birthPlace) ^
+      const DeepCollectionEquality().hash(anotherName);
 
   @JsonKey(ignore: true)
   @override
@@ -620,7 +666,7 @@ abstract class _LilyModel implements LilyModel {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -629,7 +675,9 @@ abstract class _LilyModel implements LilyModel {
       double? weight,
       String? bloodType,
       String? lifeStatus,
-      String? charm}) = _$_LilyModel;
+      String? charm,
+      String? birthPlace,
+      String? anotherName}) = _$_LilyModel;
 
   factory _LilyModel.fromJson(Map<String, dynamic> json) =
       _$_LilyModel.fromJson;
@@ -657,7 +705,7 @@ abstract class _LilyModel implements LilyModel {
   @override
   String? get garden => throw _privateConstructorUsedError;
   @override
-  String? get grade => throw _privateConstructorUsedError;
+  int? get grade => throw _privateConstructorUsedError;
   @override
   String? get legion => throw _privateConstructorUsedError;
   @override
@@ -676,6 +724,10 @@ abstract class _LilyModel implements LilyModel {
   String? get lifeStatus => throw _privateConstructorUsedError;
   @override
   String? get charm => throw _privateConstructorUsedError;
+  @override
+  String? get birthPlace => throw _privateConstructorUsedError;
+  @override
+  String? get anotherName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LilyModelCopyWith<_LilyModel> get copyWith =>
