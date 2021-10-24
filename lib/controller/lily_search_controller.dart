@@ -109,7 +109,9 @@ class LilySearchController implements ILilySearchController {
         height: tmp['height'] != null ? double.tryParse(tmp['height']) : null,
         isBoosted: tmp['lily:isBoosted'],
         legion: tmp['legion'],
-        legionJobTitle: tmp['legionJobTitle'],
+        legionJobTitle: tmp['legionJobTitle'] is List<dynamic>
+            ? tmp['legionJobTitle'].toList().join(', ')
+            : tmp['legionJobTitle'],
         lifeStatus: tmp['lifeStatus'],
         rareSkill: tmp['rareSkill'],
         subSkill: tmp['subSkill'] is List<String>
