@@ -22,11 +22,19 @@ class _$WordSearchModelTearOff {
   const _$WordSearchModelTearOff();
 
   _WordSearchModel call(
-      {required Map<String, dynamic> results,
-      List<Map<String, dynamic>>? resultList}) {
+      {required String uri,
+      required String key,
+      required String name,
+      required String nameKana,
+      String? garden,
+      String? position}) {
     return _WordSearchModel(
-      results: results,
-      resultList: resultList,
+      uri: uri,
+      key: key,
+      name: name,
+      nameKana: nameKana,
+      garden: garden,
+      position: position,
     );
   }
 
@@ -40,9 +48,12 @@ const $WordSearchModel = _$WordSearchModelTearOff();
 
 /// @nodoc
 mixin _$WordSearchModel {
-  Map<String, dynamic> get results => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>>? get resultList =>
-      throw _privateConstructorUsedError;
+  String get uri => throw _privateConstructorUsedError;
+  String get key => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get nameKana => throw _privateConstructorUsedError;
+  String? get garden => throw _privateConstructorUsedError;
+  String? get position => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +67,12 @@ abstract class $WordSearchModelCopyWith<$Res> {
           WordSearchModel value, $Res Function(WordSearchModel) then) =
       _$WordSearchModelCopyWithImpl<$Res>;
   $Res call(
-      {Map<String, dynamic> results, List<Map<String, dynamic>>? resultList});
+      {String uri,
+      String key,
+      String name,
+      String nameKana,
+      String? garden,
+      String? position});
 }
 
 /// @nodoc
@@ -70,18 +86,38 @@ class _$WordSearchModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? results = freezed,
-    Object? resultList = freezed,
+    Object? uri = freezed,
+    Object? key = freezed,
+    Object? name = freezed,
+    Object? nameKana = freezed,
+    Object? garden = freezed,
+    Object? position = freezed,
   }) {
     return _then(_value.copyWith(
-      results: results == freezed
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      resultList: resultList == freezed
-          ? _value.resultList
-          : resultList // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+      uri: uri == freezed
+          ? _value.uri
+          : uri // ignore: cast_nullable_to_non_nullable
+              as String,
+      key: key == freezed
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      nameKana: nameKana == freezed
+          ? _value.nameKana
+          : nameKana // ignore: cast_nullable_to_non_nullable
+              as String,
+      garden: garden == freezed
+          ? _value.garden
+          : garden // ignore: cast_nullable_to_non_nullable
+              as String?,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -94,7 +130,12 @@ abstract class _$WordSearchModelCopyWith<$Res>
       __$WordSearchModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Map<String, dynamic> results, List<Map<String, dynamic>>? resultList});
+      {String uri,
+      String key,
+      String name,
+      String nameKana,
+      String? garden,
+      String? position});
 }
 
 /// @nodoc
@@ -110,18 +151,38 @@ class __$WordSearchModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? results = freezed,
-    Object? resultList = freezed,
+    Object? uri = freezed,
+    Object? key = freezed,
+    Object? name = freezed,
+    Object? nameKana = freezed,
+    Object? garden = freezed,
+    Object? position = freezed,
   }) {
     return _then(_WordSearchModel(
-      results: results == freezed
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      resultList: resultList == freezed
-          ? _value.resultList
-          : resultList // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+      uri: uri == freezed
+          ? _value.uri
+          : uri // ignore: cast_nullable_to_non_nullable
+              as String,
+      key: key == freezed
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      nameKana: nameKana == freezed
+          ? _value.nameKana
+          : nameKana // ignore: cast_nullable_to_non_nullable
+              as String,
+      garden: garden == freezed
+          ? _value.garden
+          : garden // ignore: cast_nullable_to_non_nullable
+              as String?,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -131,19 +192,33 @@ class __$WordSearchModelCopyWithImpl<$Res>
 class _$_WordSearchModel
     with DiagnosticableTreeMixin
     implements _WordSearchModel {
-  const _$_WordSearchModel({required this.results, this.resultList});
+  const _$_WordSearchModel(
+      {required this.uri,
+      required this.key,
+      required this.name,
+      required this.nameKana,
+      this.garden,
+      this.position});
 
   factory _$_WordSearchModel.fromJson(Map<String, dynamic> json) =>
       _$$_WordSearchModelFromJson(json);
 
   @override
-  final Map<String, dynamic> results;
+  final String uri;
   @override
-  final List<Map<String, dynamic>>? resultList;
+  final String key;
+  @override
+  final String name;
+  @override
+  final String nameKana;
+  @override
+  final String? garden;
+  @override
+  final String? position;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WordSearchModel(results: $results, resultList: $resultList)';
+    return 'WordSearchModel(uri: $uri, key: $key, name: $name, nameKana: $nameKana, garden: $garden, position: $position)';
   }
 
   @override
@@ -151,27 +226,43 @@ class _$_WordSearchModel
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'WordSearchModel'))
-      ..add(DiagnosticsProperty('results', results))
-      ..add(DiagnosticsProperty('resultList', resultList));
+      ..add(DiagnosticsProperty('uri', uri))
+      ..add(DiagnosticsProperty('key', key))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('nameKana', nameKana))
+      ..add(DiagnosticsProperty('garden', garden))
+      ..add(DiagnosticsProperty('position', position));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _WordSearchModel &&
-            (identical(other.results, results) ||
+            (identical(other.uri, uri) ||
+                const DeepCollectionEquality().equals(other.uri, uri)) &&
+            (identical(other.key, key) ||
+                const DeepCollectionEquality().equals(other.key, key)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.nameKana, nameKana) ||
                 const DeepCollectionEquality()
-                    .equals(other.results, results)) &&
-            (identical(other.resultList, resultList) ||
+                    .equals(other.nameKana, nameKana)) &&
+            (identical(other.garden, garden) ||
+                const DeepCollectionEquality().equals(other.garden, garden)) &&
+            (identical(other.position, position) ||
                 const DeepCollectionEquality()
-                    .equals(other.resultList, resultList)));
+                    .equals(other.position, position)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(results) ^
-      const DeepCollectionEquality().hash(resultList);
+      const DeepCollectionEquality().hash(uri) ^
+      const DeepCollectionEquality().hash(key) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(nameKana) ^
+      const DeepCollectionEquality().hash(garden) ^
+      const DeepCollectionEquality().hash(position);
 
   @JsonKey(ignore: true)
   @override
@@ -186,17 +277,28 @@ class _$_WordSearchModel
 
 abstract class _WordSearchModel implements WordSearchModel {
   const factory _WordSearchModel(
-      {required Map<String, dynamic> results,
-      List<Map<String, dynamic>>? resultList}) = _$_WordSearchModel;
+      {required String uri,
+      required String key,
+      required String name,
+      required String nameKana,
+      String? garden,
+      String? position}) = _$_WordSearchModel;
 
   factory _WordSearchModel.fromJson(Map<String, dynamic> json) =
       _$_WordSearchModel.fromJson;
 
   @override
-  Map<String, dynamic> get results => throw _privateConstructorUsedError;
+  String get uri => throw _privateConstructorUsedError;
   @override
-  List<Map<String, dynamic>>? get resultList =>
-      throw _privateConstructorUsedError;
+  String get key => throw _privateConstructorUsedError;
+  @override
+  String get name => throw _privateConstructorUsedError;
+  @override
+  String get nameKana => throw _privateConstructorUsedError;
+  @override
+  String? get garden => throw _privateConstructorUsedError;
+  @override
+  String? get position => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$WordSearchModelCopyWith<_WordSearchModel> get copyWith =>
