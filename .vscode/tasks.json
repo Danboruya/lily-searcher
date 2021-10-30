@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Flutter run on Github Codespaces",
+            "type": "shell",
+            "command": "flutter run -d web-server --web-hostname=0.0.0.0 --web-port=3000",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Flutter debug on Github Codespaces",
+            "type": "shell",
+            "command": "flutter run --debug -d web-server --web-hostname=0.0.0.0 --web-port=3000",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Flutter profile on Github Codespaces",
+            "type": "shell",
+            "command": "flutter run --profile -d web-server --web-hostname=0.0.0.0 --web-port=3000",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Flutter run as release mode on Github Codespaces",
+            "type": "shell",
+            "command": "flutter run --release -d web-server --web-hostname=0.0.0.0 --web-port=3000",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        }
+    ]
+}
