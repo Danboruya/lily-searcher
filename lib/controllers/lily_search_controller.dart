@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:lily_searcher/controller/i_lily_search_controller.dart';
+import 'package:lily_searcher/controllers/i_lily_search_controller.dart';
 import 'package:lily_searcher/models/lily/lily_model.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/repositories/lily_rdf_repository.dart';
