@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeSelecter extends StateNotifier<ThemeMode> {
-  ThemeSelecter() : super(ThemeMode.system) {
+  ThemeSelecter() : super(ThemeMode.light) {
     init();
   }
 

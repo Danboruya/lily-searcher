@@ -4,25 +4,14 @@ import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/providers/view_model_providers.dart';
 import 'package:lily_searcher/view_models/search_list_view_model.dart';
+import 'package:lily_searcher/views/theme_select_view.dart';
 import 'package:lily_searcher/views/widgets/exception_dialog.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 import 'lily_detail_view.dart';
 
-class SearchListView extends StatelessWidget {
+class SearchListView extends ConsumerWidget {
   const SearchListView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.blue),
-      home: const SearchListViewer(),
-    );
-  }
-}
-
-class SearchListViewer extends ConsumerWidget {
-  const SearchListViewer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -34,6 +23,7 @@ class SearchListViewer extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Lily Searcher'),
       ),
+      drawer: const ThemeSelectView(),
       body: SafeArea(
         child: Column(
           children: [

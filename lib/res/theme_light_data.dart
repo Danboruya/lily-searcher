@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-final ThemeData ligthThemeData = ThemeData.light().copyWith();
+final ThemeData lightThemeData = ThemeData.light().copyWith();
