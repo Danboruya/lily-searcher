@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ThemeSelecter extends StateNotifier<ThemeMode> {
-  ThemeSelecter() : super(ThemeMode.light) {
+class ThemeSelector extends StateNotifier<ThemeMode> {
+  ThemeSelector() : super(ThemeMode.light) {
     init();
   }
 
@@ -15,7 +15,7 @@ class ThemeSelecter extends StateNotifier<ThemeMode> {
     final themeIndex = await _themeIndex;
     state = ThemeMode.values.firstWhere(
       (elm) => elm.index == themeIndex,
-      orElse: () => ThemeMode.system,
+      orElse: () => ThemeMode.light,
     );
   }
 
@@ -31,7 +31,7 @@ class ThemeSelecter extends StateNotifier<ThemeMode> {
     return prefs.getInt(themePrefsKey);
   }
 
-  /// Store the selected [themeIndex] to `SharedPrefences`.
+  /// Store the selected [themeIndex] to `SharedPreferences`.
   Future<void> _save(int themIndex) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(themePrefsKey, themIndex);

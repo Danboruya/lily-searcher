@@ -17,4 +17,4 @@ final businessExceptionProvider =
     StateNotifierProvider<BusinessExceptionStateNotifier, BusinessException>(
         (ref) => BusinessExceptionStateNotifier(ref.read(loggerProvider)));
 
-final themeSelecterProvider = StateNotifierProvider((ref) => ThemeSelecter());
+final themeSelectorProvider = StateNotifierProvider((ref) => ThemeSelector());

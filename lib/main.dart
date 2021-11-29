@@ -19,7 +19,7 @@ class MyApp extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = useProvider(themeSelecterProvider);
+    final themeMode = useProvider(themeSelectorProvider);
 
     return MaterialApp(
       theme: themeMode == ThemeMode.dark ? darkThemeData : lightThemeData,

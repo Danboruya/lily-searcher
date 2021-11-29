@@ -7,8 +7,8 @@ class ThemeSelectView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final themeSelecter = watch(themeSelecterProvider.notifier);
-    final themeSelectState = watch(themeSelecterProvider);
+    final themeSelector = watch(themeSelectorProvider.notifier);
+    final themeSelectState = watch(themeSelectorProvider);
     bool isSwitched = themeSelectState == ThemeMode.dark ? true : false;
 
     return Drawer(
@@ -32,9 +32,9 @@ class ThemeSelectView extends ConsumerWidget {
               value: isSwitched,
               onChanged: (value) {
                 if (value == true) {
-                  themeSelecter.change(ThemeMode.dark);
+                  themeSelector.change(ThemeMode.dark);
                 } else {
-                  themeSelecter.change(ThemeMode.light);
+                  themeSelector.change(ThemeMode.light);
                 }
               },
             ),
