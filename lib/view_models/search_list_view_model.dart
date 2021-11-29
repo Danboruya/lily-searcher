@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lily_searcher/controller/lily_search_controller.dart';
+import 'package:lily_searcher/controllers/lily_search_controller.dart';
 import 'package:lily_searcher/models/lily/lily_model.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
