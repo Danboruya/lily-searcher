@@ -95,18 +95,20 @@ class SearchListView extends ConsumerWidget {
 
           if (context.read(businessExceptionProvider).hasException)
             {
-              showDialog(
+              await showDialog(
                 context: context,
                 builder: (BuildContext context) =>
                     exceptionDialog(context, null),
               ),
-            },
-
-          // Screen transition only when search results would be not null
-          if (viewModel.lily != null)
+            }
+          else
             {
-              Navigator.of(context)
-                  .push(LilyDetailView.createPageRoute(viewModel.lily)),
+              // Screen transition only when search results would be not null
+              if (viewModel.lily != null)
+                {
+                  Navigator.of(context)
+                      .push(LilyDetailView.createPageRoute(viewModel.lily)),
+                },
             },
         },
         child: Row(

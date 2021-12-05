@@ -4,14 +4,17 @@ import 'package:lily_searcher/controllers/i_lily_search_controller.dart';
 import 'package:lily_searcher/models/lily/lily_model.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/repositories/lily_rdf_repository.dart';
+import 'package:lily_searcher/utils/business_exception.dart';
 import 'package:lily_searcher/utils/enums.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 class LilySearchController implements ILilySearchController {
-  LilySearchController(this._lilySearchRepository, this._logger);
+  LilySearchController(
+      this._lilySearchRepository, this._logger, this._businessException);
 
   final LilyRdfRepository _lilySearchRepository;
   final SimpleLogger _logger;
+  final BusinessException _businessException;
 
   /// Search lily with specified search [word]
   @override
@@ -90,24 +93,6 @@ class LilySearchController implements ILilySearchController {
                   .split('-')[tmp['birthDate'].split('-').length - 2]))
           : null;
 
-      // Extract lily's charm
-      String? charm;
-      List<String> charms = [];
-      if (tmp['charm'] != null) {
-        if (tmp['charm'] is List<dynamic>) {
-          tmp['charm'].foreach((id) async => {
-                if (resources.containsKey(id))
-                  {
-                    await charms.add(_lilySearchRepository.linkedSearch(
-                        resources[id], SearchType.charm)),
-                  }
-              });
-          charm = charms.join(', ');
-        }
-      } else {
-        charm = null;
-      }
-
       resModel = LilyModel(
         key: key,
         name: tmp['label'],
@@ -139,7 +124,7 @@ class LilySearchController implements ILilySearchController {
             : tmp['legionJobTitle'],
         lifeStatus: tmp['lifeStatus'],
         rareSkill: tmp['rareSkill'],
-        charm: charm,
+        charm: await _createCharmList(tmp, resources),
         subSkill: tmp['subSkill'] is List<String>
             ? tmp['subSkill'].join(', ')
             : tmp['subSkill'],
@@ -149,5 +134,60 @@ class LilySearchController implements ILilySearchController {
     }
 
     return resModel;
+  }
+
+  Future<String?>? _createCharmList(
+      Map<String, dynamic> tmp, Map<String, dynamic> resources) async {
+    String charmName;
+    List<String> charms = [];
+
+    if (tmp['charm'] != null) {
+      if (tmp['charm'] is List<dynamic>) {
+        await tmp['charm'].forEach(
+          (id) async => {
+            if (resources.containsKey(id))
+              {
+                charmName =
+                    await _linkedSearch(resources[id], SearchType.charmName),
+                if (charmName != "")
+                  {
+                    charms.add(charmName),
+                  },
+              },
+          },
+        );
+        return charms.join(', ');
+      }
+    } else {
+      return null;
+    }
+  }
+
+  /// Linked search with specified search [type] and search [key].
+  Future<String> _linkedSearch(String key, SearchType type) async {
+    switch (type) {
+      // Search charm name
+      case SearchType.charmName:
+        String rawRes = await _lilySearchRepository.retrieveCharmInfo(key);
+        final Map<String, dynamic> res = jsonDecode(rawRes);
+
+        _logger.finer(res.toString());
+
+        if (res['results']['bindings'].length != 0) {
+          // Return charm name if query result has charm name.
+          return res['results']['bindings'].first['name']['value'];
+        } else {
+          // Otherwise, return empty string.
+          return "";
+        }
+      // Throw exception because of no such type defined.
+      default:
+        String title = "Something went wrong";
+        String message = "Failed to retrieve infomation.¥nPlease try again.";
+        _logger.severe("Failed to retreave the data.");
+        _logger.severe("Params -> Key: $key, SearchType: $type");
+        _businessException.create(title, message);
+        throw UnimplementedError("Type is not defined.");
+    }
   }
 }

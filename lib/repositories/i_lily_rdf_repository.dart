@@ -8,6 +8,6 @@ abstract class ILilyRdfRepository {
   /// Retrieve lily detail by specified [key].
   Future<String> retrieveLilyDetail(String key);
 
-  /// Retrieve lily detail data by specified [key] based on search [type]
-  Future<String> linkedSearch(String key, SearchType type);
+  /// Retrieve charm detail information which has specified [charmId].
+  Future<String> retrieveCharmInfo(String charmId);
 }

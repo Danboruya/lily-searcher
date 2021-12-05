@@ -198,6 +198,15 @@ class LilyDetailView extends ConsumerWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Text('使用チャーム'),
+                    const SizedBox(width: 20),
+                    Text(res.charm ?? 'N/A'),
+                  ],
+                ),
               ],
             ),
           ],

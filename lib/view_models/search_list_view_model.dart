@@ -51,9 +51,11 @@ class SearchListViewModel
     } on Exception catch (error) {
       _logger.shout(error);
       _lily = null;
-      context
-          .read(businessExceptionProvider)
-          .create("Failed to retrieve the data", error.toString());
+      if (context.read(businessExceptionProvider).hasException == false) {
+        context
+            .read(businessExceptionProvider)
+            .create("Failed to retrieve the data", error.toString());
+      }
     }
   }
 }
