@@ -4,6 +4,7 @@ import 'package:lily_searcher/controllers/i_lily_search_controller.dart';
 import 'package:lily_searcher/models/lily/lily_model.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/repositories/lily_rdf_repository.dart';
+import 'package:lily_searcher/utils/enums.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 class LilySearchController implements ILilySearchController {
@@ -69,8 +70,14 @@ class LilySearchController implements ILilySearchController {
 
     late LilyModel resModel;
     Map<String, dynamic> tmp = {};
+    Map<String, dynamic> resources = {};
+
     // List has value only when response has list of map
     if (res['@graph'].length != 0) {
+      for (int i = 0; i < res['@graph'].length - 1; i++) {
+        resources[res['@graph'][i]['@id']] = res['@graph'][i]['resource'];
+      }
+
       tmp = res['@graph'].last;
 
       // Extract lily's birthday
@@ -82,6 +89,24 @@ class LilySearchController implements ILilySearchController {
               int.parse(tmp['birthDate']
                   .split('-')[tmp['birthDate'].split('-').length - 2]))
           : null;
+
+      // Extract lily's charm
+      String? charm;
+      List<String> charms = [];
+      if (tmp['charm'] != null) {
+        if (tmp['charm'] is List<dynamic>) {
+          tmp['charm'].foreach((id) async => {
+                if (resources.containsKey(id))
+                  {
+                    await charms.add(_lilySearchRepository.linkedSearch(
+                        resources[id], SearchType.charm)),
+                  }
+              });
+          charm = charms.join(', ');
+        }
+      } else {
+        charm = null;
+      }
 
       resModel = LilyModel(
         key: key,
@@ -114,6 +139,7 @@ class LilySearchController implements ILilySearchController {
             : tmp['legionJobTitle'],
         lifeStatus: tmp['lifeStatus'],
         rareSkill: tmp['rareSkill'],
+        charm: charm,
         subSkill: tmp['subSkill'] is List<String>
             ? tmp['subSkill'].join(', ')
             : tmp['subSkill'],
