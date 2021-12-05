@@ -33,7 +33,7 @@ class _$LilyModelTearOff {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      int? grade,
+      String? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -93,7 +93,7 @@ mixin _$LilyModel {
   bool? get isBoosted => throw _privateConstructorUsedError;
   String? get boostedSkill => throw _privateConstructorUsedError;
   String? get garden => throw _privateConstructorUsedError;
-  int? get grade => throw _privateConstructorUsedError;
+  String? get grade => throw _privateConstructorUsedError;
   String? get legion => throw _privateConstructorUsedError;
   String? get legionJobTitle => throw _privateConstructorUsedError;
   String? get position => throw _privateConstructorUsedError;
@@ -128,7 +128,7 @@ abstract class $LilyModelCopyWith<$Res> {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      int? grade,
+      String? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -224,7 +224,7 @@ class _$LilyModelCopyWithImpl<$Res> implements $LilyModelCopyWith<$Res> {
       grade: grade == freezed
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       legion: legion == freezed
           ? _value.legion
           : legion // ignore: cast_nullable_to_non_nullable
@@ -291,7 +291,7 @@ abstract class _$LilyModelCopyWith<$Res> implements $LilyModelCopyWith<$Res> {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      int? grade,
+      String? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -388,7 +388,7 @@ class __$LilyModelCopyWithImpl<$Res> extends _$LilyModelCopyWithImpl<$Res>
       grade: grade == freezed
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       legion: legion == freezed
           ? _value.legion
           : legion // ignore: cast_nullable_to_non_nullable
@@ -491,7 +491,7 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
   @override
   final String? garden;
   @override
-  final int? grade;
+  final String? grade;
   @override
   final String? legion;
   @override
@@ -666,7 +666,7 @@ abstract class _LilyModel implements LilyModel {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      int? grade,
+      String? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -705,7 +705,7 @@ abstract class _LilyModel implements LilyModel {
   @override
   String? get garden => throw _privateConstructorUsedError;
   @override
-  int? get grade => throw _privateConstructorUsedError;
+  String? get grade => throw _privateConstructorUsedError;
   @override
   String? get legion => throw _privateConstructorUsedError;
   @override

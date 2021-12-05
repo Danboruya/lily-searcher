@@ -27,16 +27,16 @@ class SearchListViewModel
 
   /// Search Lily from database with specified [searchWord]
   Future<void> searchLilyWithWord() async {
-    // When word is empty or only has whitespace,
-    if (searchWord.isEmpty || searchWord.trim().isEmpty) {
-      return;
-    }
-
     state = const AsyncValue.loading();
     try {
-      // Retrieve Lily data by inputted word on SearchList view
-      final List<WordSearchModel> res =
-          await _lilySearchController.wordSearch(searchWord);
+      late List<WordSearchModel> res;
+      // When word is empty or only has whitespace,
+      if (searchWord.isEmpty || searchWord.trim().isEmpty) {
+        res = await _lilySearchController.searchAll();
+      } else {
+        // Retrieve Lily data by inputted word on SearchList view
+        res = await _lilySearchController.wordSearch(searchWord);
+      }
       state = AsyncValue.data(res);
     } on Exception catch (error) {
       state = AsyncValue.error(error);

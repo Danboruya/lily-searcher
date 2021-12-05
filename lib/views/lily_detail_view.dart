@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:lily_searcher/models/lily/lily_model.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/providers/view_model_providers.dart';
+import 'package:lily_searcher/res/strings.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 class LilyDetailView extends ConsumerWidget {
@@ -56,163 +57,134 @@ class LilyDetailView extends ConsumerWidget {
   Widget _buildDetailInfo(
       BuildContext context, LilyModel res, SimpleLogger logger) {
     return Card(
-      child: InkWell(
-        borderRadius: BorderRadius.circular(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                const Icon(
-                  Icons.person,
-                  size: 70.0,
-                  color: Colors.grey,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      res.name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                      child: FittedBox(
-                        fit: BoxFit.fitWidth,
-                        child: Text(
-                          res.nameKana,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+      child: ListView(
+        children: [
+          ListTile(
+            leading: const Icon(
+              Icons.person,
+              size: 70.0,
+              color: Colors.grey,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Divider(
-                  color: Colors.black,
-                  thickness: 1,
-                  indent: 10,
-                  endIndent: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('所属ガーデン'),
-                    const SizedBox(width: 20),
-                    Text(
-                      '${res.garden}',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('ポジション'),
-                    const SizedBox(width: 20),
-                    Text(
-                      '${res.position}',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('レアスキル'),
-                    const SizedBox(width: 20),
-                    Text(
-                      '${res.rareSkill}',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('レギオン'),
-                    const SizedBox(width: 20),
-                    Text(
-                      '${res.legion}',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                if (res.isBoosted == true)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text('ブーステッドスキル'),
-                      const SizedBox(width: 20),
-                      Flexible(
-                        child: Text(
-                          '${res.boostedSkill}',
-                        ),
-                      ),
-                    ],
-                  ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('血液型'),
-                    const SizedBox(width: 20),
-                    Text(
-                      '${res.bloodType}',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('二つ名'),
-                    const SizedBox(width: 20),
-                    Text(
-                      '${res.anotherName}',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('誕生日'),
-                    const SizedBox(width: 20),
-                    Text(
-                      res.birthDay == null
-                          ? 'N/A'
-                          : (DateFormat('MM/dd')).format(res.birthDay!),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('使用チャーム'),
-                    const SizedBox(width: 20),
-                    Text(res.charm ?? 'N/A'),
-                  ],
-                ),
-              ],
+            title: Text(
+              res.name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ],
-        ),
+            subtitle: Text(
+              res.nameKana,
+            ),
+          ),
+          const Divider(
+            color: Colors.black,
+            thickness: 1,
+            indent: 10,
+            endIndent: 10,
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('所属ガーデン'),
+            ),
+            title: Text(
+              res.garden ?? noInfoLbl,
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('学年'),
+            ),
+            title: Text(
+              res.grade ?? noInfoLbl,
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('所属レギオン'),
+            ),
+            title: Text(
+              res.legion ?? noInfoLbl,
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('レギオン役職'),
+            ),
+            title: Text(
+              res.legionJobTitle ?? noInfoLbl,
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('ポジション'),
+            ),
+            title: Text(
+              res.position ?? noInfoLbl,
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('レアスキル'),
+            ),
+            title: Text(
+              res.rareSkill ?? noInfoLbl,
+            ),
+          ),
+          if (res.isBoosted == true)
+            ListTile(
+              leading: const SizedBox(
+                width: 100,
+                child: Text('ブーステッドスキル'),
+              ),
+              title: Text(
+                res.boostedSkill ?? noInfoLbl,
+              ),
+            ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('血液型'),
+            ),
+            title: Text(
+              res.bloodType ?? noInfoLbl,
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('二つ名'),
+            ),
+            title: Text(
+              res.anotherName ?? noInfoLbl,
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('誕生日'),
+            ),
+            title: Text(
+              res.birthDay == null
+                  ? noInfoLbl
+                  : (DateFormat('MM/dd')).format(res.birthDay!),
+            ),
+          ),
+          ListTile(
+            leading: const SizedBox(
+              width: 100,
+              child: Text('使用チャーム'),
+            ),
+            title: Text(
+              res.charm ?? noInfoLbl,
+            ),
+          ),
+        ],
       ),
     );
-    // return ;
   }
 }

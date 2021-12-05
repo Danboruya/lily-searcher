@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/providers/view_model_providers.dart';
+import 'package:lily_searcher/res/strings.dart';
 import 'package:lily_searcher/view_models/search_list_view_model.dart';
 import 'package:lily_searcher/views/theme_select_view.dart';
 import 'package:lily_searcher/views/widgets/exception_dialog.dart';
@@ -137,7 +138,7 @@ class SearchListView extends ConsumerWidget {
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
                     child: Text(
-                      res.nameKana,
+                      res.nameKana ?? noInfoLbl,
                     ),
                   ),
                 ),
@@ -146,7 +147,7 @@ class SearchListView extends ConsumerWidget {
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
                     child: Text(
-                      '${res.garden}, (${res.position})',
+                      '${res.garden ?? noInfoLbl}, (${res.position ?? noInfoLbl})',
                     ),
                   ),
                 ),

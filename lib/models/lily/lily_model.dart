@@ -19,7 +19,7 @@ class LilyModel with _$LilyModel {
     bool? isBoosted,
     String? boostedSkill,
     String? garden,
-    int? grade,
+    String? grade,
     String? legion,
     String? legionJobTitle,
     String? position,

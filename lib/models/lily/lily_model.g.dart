@@ -20,7 +20,7 @@ _$_LilyModel _$$_LilyModelFromJson(Map<String, dynamic> json) => _$_LilyModel(
       isBoosted: json['isBoosted'] as bool?,
       boostedSkill: json['boostedSkill'] as String?,
       garden: json['garden'] as String?,
-      grade: json['grade'] as int?,
+      grade: json['grade'] as String?,
       legion: json['legion'] as String?,
       legionJobTitle: json['legionJobTitle'] as String?,
       position: json['position'] as String?,

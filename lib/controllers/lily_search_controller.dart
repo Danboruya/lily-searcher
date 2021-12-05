@@ -16,6 +16,58 @@ class LilySearchController implements ILilySearchController {
   final SimpleLogger _logger;
   final BusinessException _businessException;
 
+  @override
+  Future<List<WordSearchModel>> searchAll() async {
+    final rawRes = await _lilySearchRepository.retrieveAllLilyList();
+
+    final Map<String, dynamic> res = jsonDecode(rawRes);
+    _logger.finer(res.toString());
+
+    List<WordSearchModel> resList = [];
+
+    // List has value only when response has list of map
+    if (res['results']['bindings'].length != 0) {
+      String currentUri = "";
+
+      for (final item in res['results']['bindings']) {
+        if (currentUri != item['lily']['value']) {
+          currentUri = item['lily']['value'];
+        } else {
+          continue;
+        }
+
+        String? pos =
+        item.containsKey('position') ? item['position']['value'] : null;
+        String? currentPos =
+        item.containsKey('position') ? item['position']['value'] : null;
+
+        if (pos != null && currentPos != null) {
+          for (final elm in res['results']['bindings']) {
+            if (currentUri == elm['lily']['value'] &&
+                currentPos != elm['position']['value'] &&
+                pos != null) {
+              pos += ", ${elm['position']['value']}";
+            }
+          }
+        }
+
+        resList.add(WordSearchModel(
+            uri: item['lily']['value'],
+            key: item['lily']['value'].split("/").last,
+            name: item['name']['value'],
+            nameKana: item.containsKey('nameKana') ? item['nameKana']['value'] : null,
+            garden: item.containsKey('garden') ? item['garden']['value'] : null,
+            position: pos));
+      }
+
+      _logger.finer('Return : ${resList.length}records.');
+    } else {
+      resList = List.empty();
+    }
+
+    return resList;
+  }
+
   /// Search lily with specified search [word]
   @override
   Future<List<WordSearchModel>> wordSearch(String word) async {
@@ -37,13 +89,18 @@ class LilySearchController implements ILilySearchController {
           continue;
         }
 
-        String pos = item['position']['value'];
-        String currentPos = item['position']['value'];
+        String? pos =
+            item.containsKey('position') ? item['position']['value'] : null;
+        String? currentPos =
+            item.containsKey('position') ? item['position']['value'] : null;
 
-        for (final elm in res['results']['bindings']) {
-          if (currentUri == elm['lily']['value'] &&
-              currentPos != elm['position']['value']) {
-            pos += ", ${elm['position']['value']}";
+        if (pos != null && currentPos != null) {
+          for (final elm in res['results']['bindings']) {
+            if (currentUri == elm['lily']['value'] &&
+                currentPos != elm['position']['value'] &&
+                pos != null) {
+              pos += ", ${elm['position']['value']}";
+            }
           }
         }
 
@@ -93,6 +150,14 @@ class LilySearchController implements ILilySearchController {
                   .split('-')[tmp['birthDate'].split('-').length - 2]))
           : null;
 
+      String? grade = tmp['lily:grade'] != null
+          ? tmp['lily:grade'] < 10
+              ? tmp['lily:grade'] < 6
+                  ? '初等部'
+                  : '中等部 ${tmp['lily:grade'] - 6} 年'
+              : '${tmp['lily:grade'] - 9} 年'
+          : null;
+
       resModel = LilyModel(
         key: key,
         name: tmp['label'],
@@ -115,17 +180,17 @@ class LilySearchController implements ILilySearchController {
         boostedSkill: tmp['boostedSkill'] is List<dynamic>
             ? tmp['boostedSkill'].toList().join(', ')
             : tmp['boostedSkill'],
-        grade: tmp['lily:grade'],
+        grade: grade,
         height: tmp['height'] != null ? double.tryParse(tmp['height']) : null,
         isBoosted: tmp['lily:isBoosted'],
-        legion: tmp['legion'],
+        legion: await _fetchLegionName(tmp['legion']),
         legionJobTitle: tmp['legionJobTitle'] is List<dynamic>
             ? tmp['legionJobTitle'].toList().join(', ')
             : tmp['legionJobTitle'],
         lifeStatus: tmp['lifeStatus'],
         rareSkill: tmp['rareSkill'],
         charm: await _createCharmList(tmp, resources),
-        subSkill: tmp['subSkill'] is List<String>
+        subSkill: tmp['subSkill'] is List<dynamic>
             ? tmp['subSkill'].join(', ')
             : tmp['subSkill'],
         type: tmp['@type'],
@@ -143,7 +208,8 @@ class LilySearchController implements ILilySearchController {
 
     if (tmp['charm'] != null) {
       if (tmp['charm'] is List<dynamic>) {
-        await tmp['charm'].forEach(
+        await Future.forEach(
+          tmp['charm'],
           (id) async => {
             if (resources.containsKey(id))
               {
@@ -163,19 +229,52 @@ class LilySearchController implements ILilySearchController {
     }
   }
 
+  Future<String?> _fetchLegionName(String? legion) async {
+    if (legion != null) {
+      return await _linkedSearch(legion, SearchType.legionName);
+    } else {
+      return null;
+    }
+  }
+
   /// Linked search with specified search [type] and search [key].
   Future<String> _linkedSearch(String key, SearchType type) async {
+    late String rawRes;
+    late final Map<String, dynamic> res;
     switch (type) {
       // Search charm name
       case SearchType.charmName:
-        String rawRes = await _lilySearchRepository.retrieveCharmInfo(key);
-        final Map<String, dynamic> res = jsonDecode(rawRes);
+        rawRes = await _lilySearchRepository.retrieveCharmInfo(key);
+        res = jsonDecode(rawRes);
 
         _logger.finer(res.toString());
 
-        if (res['results']['bindings'].length != 0) {
+        if (res.containsKey('name')) {
           // Return charm name if query result has charm name.
-          return res['results']['bindings'].first['name']['value'];
+          return res['name'] != null
+              ? res['name']
+                  .where((elm) => elm['@language'] == 'ja')
+                  .toList()
+                  .first['@value']
+              : "";
+        } else {
+          // Otherwise, return empty string.
+          return "";
+        }
+      case SearchType.legionName:
+        rawRes = await _lilySearchRepository.retrieveLegionInfo(key);
+        res = jsonDecode(rawRes);
+
+        _logger.finer(res.toString());
+
+        if (res.containsKey('name')) {
+          // Return charm name if query result has charm name.
+          return res['name'] != null
+              ? res['name']
+                  .where((elm) => elm['@language'] == 'ja')
+                  .toList()
+                  .first['@value']
+              : "";
         } else {
           // Otherwise, return empty string.
           return "";
@@ -183,8 +282,8 @@ class LilySearchController implements ILilySearchController {
       // Throw exception because of no such type defined.
       default:
         String title = "Something went wrong";
-        String message = "Failed to retrieve infomation.¥nPlease try again.";
-        _logger.severe("Failed to retreave the data.");
+        String message = "Failed to retrieve information.¥nPlease try again.";
+        _logger.severe("Failed to retrieve the data.");
         _logger.severe("Params -> Key: $key, SearchType: $type");
         _businessException.create(title, message);
         throw UnimplementedError("Type is not defined.");
