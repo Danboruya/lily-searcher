@@ -72,7 +72,7 @@ class LilyDetailView extends ConsumerWidget {
               ),
             ),
             subtitle: Text(
-              res.nameKana,
+              res.nameKana ?? noInfoLbl,
             ),
           ),
           const Divider(

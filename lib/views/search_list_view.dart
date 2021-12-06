@@ -38,14 +38,14 @@ class SearchListView extends ConsumerWidget {
                   suffixIcon: IconButton(
                     onPressed: () =>
                         searchViewModelNotifier.searchLilyWithWord(),
-                    icon: const Icon(Icons.send),
+                    icon: const Icon(Icons.search),
                   ),
                 ),
                 onChanged: (String? word) =>
                     searchViewModelNotifier.searchWord = word ?? "",
                 onSubmitted: (_) =>
                     searchViewModelNotifier.searchLilyWithWord(),
-                autofocus: true,
+                autofocus: false,
               ),
             ),
             Expanded(

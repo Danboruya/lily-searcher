@@ -10,7 +10,9 @@ import 'package:simple_logger/simple_logger.dart';
 class SearchListViewModel
     extends StateNotifier<AsyncValue<List<WordSearchModel>>> {
   SearchListViewModel(this._lilySearchController, this._logger)
-      : super(const AsyncValue.loading());
+      : super(const AsyncValue.loading()) {
+    searchInitLilyList();
+  }
 
   /// Search controller object
   final LilySearchController _lilySearchController;
@@ -24,6 +26,18 @@ class SearchListViewModel
   LilyModel? _lily;
 
   LilyModel? get lily => _lily;
+
+  /// Search all Lily from database.
+  Future<void> searchInitLilyList() async {
+    state = const AsyncValue.loading();
+    try {
+      late List<WordSearchModel> res;
+      res = await _lilySearchController.searchAll();
+      state = AsyncValue.data(res);
+    } on Exception catch (error) {
+      state = AsyncValue.error(error);
+    }
+  }
 
   /// Search Lily from database with specified [searchWord]
   Future<void> searchLilyWithWord() async {
