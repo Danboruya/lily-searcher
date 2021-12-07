@@ -4,5 +4,5 @@ import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/providers/repository_providers.dart';
 
 final lilySearchControllerProvider = Provider.autoDispose((ref) =>
-    LilySearchController(ref.read(lilyRdfRepositoryProvider),
-        ref.read(loggerProvider), ref.read(businessExceptionProvider)));
+    LilySearchController(
+        ref.read(lilyRdfRepositoryProvider), ref.read(loggerProvider)));
