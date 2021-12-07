@@ -11,7 +11,7 @@ _$_WordSearchModel _$$_WordSearchModelFromJson(Map<String, dynamic> json) =>
       uri: json['uri'] as String,
       key: json['key'] as String,
       name: json['name'] as String,
-      nameKana: json['nameKana'] as String,
+      nameKana: json['nameKana'] as String?,
       garden: json['garden'] as String?,
       position: json['position'] as String?,
     );

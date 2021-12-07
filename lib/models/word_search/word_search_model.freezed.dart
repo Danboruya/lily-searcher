@@ -25,7 +25,7 @@ class _$WordSearchModelTearOff {
       {required String uri,
       required String key,
       required String name,
-      required String nameKana,
+      required String? nameKana,
       String? garden,
       String? position}) {
     return _WordSearchModel(
@@ -51,7 +51,7 @@ mixin _$WordSearchModel {
   String get uri => throw _privateConstructorUsedError;
   String get key => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get nameKana => throw _privateConstructorUsedError;
+  String? get nameKana => throw _privateConstructorUsedError;
   String? get garden => throw _privateConstructorUsedError;
   String? get position => throw _privateConstructorUsedError;
 
@@ -70,7 +70,7 @@ abstract class $WordSearchModelCopyWith<$Res> {
       {String uri,
       String key,
       String name,
-      String nameKana,
+      String? nameKana,
       String? garden,
       String? position});
 }
@@ -109,7 +109,7 @@ class _$WordSearchModelCopyWithImpl<$Res>
       nameKana: nameKana == freezed
           ? _value.nameKana
           : nameKana // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       garden: garden == freezed
           ? _value.garden
           : garden // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ abstract class _$WordSearchModelCopyWith<$Res>
       {String uri,
       String key,
       String name,
-      String nameKana,
+      String? nameKana,
       String? garden,
       String? position});
 }
@@ -174,7 +174,7 @@ class __$WordSearchModelCopyWithImpl<$Res>
       nameKana: nameKana == freezed
           ? _value.nameKana
           : nameKana // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       garden: garden == freezed
           ? _value.garden
           : garden // ignore: cast_nullable_to_non_nullable
@@ -210,7 +210,7 @@ class _$_WordSearchModel
   @override
   final String name;
   @override
-  final String nameKana;
+  final String? nameKana;
   @override
   final String? garden;
   @override
@@ -280,7 +280,7 @@ abstract class _WordSearchModel implements WordSearchModel {
       {required String uri,
       required String key,
       required String name,
-      required String nameKana,
+      required String? nameKana,
       String? garden,
       String? position}) = _$_WordSearchModel;
 
@@ -294,7 +294,7 @@ abstract class _WordSearchModel implements WordSearchModel {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
-  String get nameKana => throw _privateConstructorUsedError;
+  String? get nameKana => throw _privateConstructorUsedError;
   @override
   String? get garden => throw _privateConstructorUsedError;
   @override

@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/providers/view_model_providers.dart';
+import 'package:lily_searcher/res/strings.dart';
 import 'package:lily_searcher/view_models/search_list_view_model.dart';
 import 'package:lily_searcher/views/theme_select_view.dart';
 import 'package:lily_searcher/views/widgets/exception_dialog.dart';
@@ -37,14 +38,14 @@ class SearchListView extends ConsumerWidget {
                   suffixIcon: IconButton(
                     onPressed: () =>
                         searchViewModelNotifier.searchLilyWithWord(),
-                    icon: const Icon(Icons.send),
+                    icon: const Icon(Icons.search),
                   ),
                 ),
                 onChanged: (String? word) =>
                     searchViewModelNotifier.searchWord = word ?? "",
                 onSubmitted: (_) =>
                     searchViewModelNotifier.searchLilyWithWord(),
-                autofocus: true,
+                autofocus: false,
               ),
             ),
             Expanded(
@@ -95,18 +96,20 @@ class SearchListView extends ConsumerWidget {
 
           if (context.read(businessExceptionProvider).hasException)
             {
-              showDialog(
+              await showDialog(
                 context: context,
                 builder: (BuildContext context) =>
                     exceptionDialog(context, null),
               ),
-            },
-
-          // Screen transition only when search results would be not null
-          if (viewModel.lily != null)
+            }
+          else
             {
-              Navigator.of(context)
-                  .push(LilyDetailView.createPageRoute(viewModel.lily)),
+              // Screen transition only when search results would be not null
+              if (viewModel.lily != null)
+                {
+                  Navigator.of(context)
+                      .push(LilyDetailView.createPageRoute(viewModel.lily)),
+                },
             },
         },
         child: Row(
@@ -135,7 +138,7 @@ class SearchListView extends ConsumerWidget {
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
                     child: Text(
-                      res.nameKana,
+                      res.nameKana ?? noInfoLbl,
                     ),
                   ),
                 ),
@@ -144,7 +147,7 @@ class SearchListView extends ConsumerWidget {
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
                     child: Text(
-                      '${res.garden}, (${res.position})',
+                      '${res.garden ?? noInfoLbl}, (${res.position ?? noInfoLbl})',
                     ),
                   ),
                 ),
