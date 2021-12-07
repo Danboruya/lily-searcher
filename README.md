@@ -45,6 +45,7 @@ See `pubspec.yml` for details.
 2. Get dependent packages
 
     ```bash
+    cd lily-searcher
     flutter pub get
     ```
 
