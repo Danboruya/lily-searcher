@@ -34,7 +34,7 @@ Currently our app includes the following features:
 
 See `pubspec.yml` for details.
 
-## Useage
+## Usage
 
 1. Clone this repository
 
