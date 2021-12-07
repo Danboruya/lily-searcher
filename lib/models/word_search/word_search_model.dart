@@ -11,7 +11,7 @@ class WordSearchModel with _$WordSearchModel {
     required String uri,
     required String key,
     required String name,
-    required String? nameKana,
+    required String nameKana,
     String? garden,
     String? position,
   }) = _WordSearchModel;
