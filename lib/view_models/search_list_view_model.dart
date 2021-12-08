@@ -10,7 +10,9 @@ import 'package:simple_logger/simple_logger.dart';
 class SearchListViewModel
     extends StateNotifier<AsyncValue<List<WordSearchModel>>> {
   SearchListViewModel(this._lilySearchController, this._logger)
-      : super(const AsyncValue.loading());
+      : super(const AsyncValue.loading()) {
+    searchInitLilyList();
+  }
 
   /// Search controller object
   final LilySearchController _lilySearchController;
@@ -25,18 +27,30 @@ class SearchListViewModel
 
   LilyModel? get lily => _lily;
 
-  /// Search Lily from database with specified [searchWord]
-  Future<void> searchLilyWithWord() async {
-    // When word is empty or only has whitespace,
-    if (searchWord.isEmpty || searchWord.trim().isEmpty) {
-      return;
-    }
-
+  /// Search all Lily from database.
+  Future<void> searchInitLilyList() async {
     state = const AsyncValue.loading();
     try {
-      // Retrieve Lily data by inputted word on SearchList view
-      final List<WordSearchModel> res =
-          await _lilySearchController.wordSearch(searchWord);
+      late List<WordSearchModel> res;
+      res = await _lilySearchController.searchAll();
+      state = AsyncValue.data(res);
+    } on Exception catch (error) {
+      state = AsyncValue.error(error);
+    }
+  }
+
+  /// Search Lily from database with specified [searchWord]
+  Future<void> searchLilyWithWord() async {
+    state = const AsyncValue.loading();
+    try {
+      late List<WordSearchModel> res;
+      // When word is empty or only has whitespace,
+      if (searchWord.isEmpty || searchWord.trim().isEmpty) {
+        res = await _lilySearchController.searchAll();
+      } else {
+        // Retrieve Lily data by inputted word on SearchList view
+        res = await _lilySearchController.wordSearch(searchWord);
+      }
       state = AsyncValue.data(res);
     } on Exception catch (error) {
       state = AsyncValue.error(error);
@@ -51,9 +65,11 @@ class SearchListViewModel
     } on Exception catch (error) {
       _logger.shout(error);
       _lily = null;
-      context
-          .read(businessExceptionProvider)
-          .create("Failed to retrieve the data", error.toString());
+      if (context.read(businessExceptionProvider).hasException == false) {
+        context
+            .read(businessExceptionProvider)
+            .create("Failed to retrieve the data", error.toString());
+      }
     }
   }
 }
