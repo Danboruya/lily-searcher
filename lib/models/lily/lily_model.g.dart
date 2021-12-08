@@ -9,7 +9,7 @@ part of 'lily_model.dart';
 _$_LilyModel _$$_LilyModelFromJson(Map<String, dynamic> json) => _$_LilyModel(
       key: json['key'] as String,
       name: json['name'] as String,
-      nameKana: json['nameKana'] as String?,
+      nameKana: json['nameKana'] as String,
       givenNameKana: json['givenNameKana'] as String?,
       age: json['age'] as int?,
       birthDay: json['birthDay'] == null
@@ -20,7 +20,7 @@ _$_LilyModel _$$_LilyModelFromJson(Map<String, dynamic> json) => _$_LilyModel(
       isBoosted: json['isBoosted'] as bool?,
       boostedSkill: json['boostedSkill'] as String?,
       garden: json['garden'] as String?,
-      grade: json['grade'] as String?,
+      grade: json['grade'] as int?,
       legion: json['legion'] as String?,
       legionJobTitle: json['legionJobTitle'] as String?,
       position: json['position'] as String?,

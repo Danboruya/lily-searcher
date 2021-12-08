@@ -24,7 +24,7 @@ class _$LilyModelTearOff {
   _LilyModel call(
       {required String key,
       required String name,
-      String? nameKana,
+      required String nameKana,
       String? givenNameKana,
       int? age,
       DateTime? birthDay,
@@ -33,7 +33,7 @@ class _$LilyModelTearOff {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -84,7 +84,7 @@ const $LilyModel = _$LilyModelTearOff();
 mixin _$LilyModel {
   String get key => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get nameKana => throw _privateConstructorUsedError;
+  String get nameKana => throw _privateConstructorUsedError;
   String? get givenNameKana => throw _privateConstructorUsedError;
   int? get age => throw _privateConstructorUsedError;
   DateTime? get birthDay => throw _privateConstructorUsedError;
@@ -93,7 +93,7 @@ mixin _$LilyModel {
   bool? get isBoosted => throw _privateConstructorUsedError;
   String? get boostedSkill => throw _privateConstructorUsedError;
   String? get garden => throw _privateConstructorUsedError;
-  String? get grade => throw _privateConstructorUsedError;
+  int? get grade => throw _privateConstructorUsedError;
   String? get legion => throw _privateConstructorUsedError;
   String? get legionJobTitle => throw _privateConstructorUsedError;
   String? get position => throw _privateConstructorUsedError;
@@ -119,7 +119,7 @@ abstract class $LilyModelCopyWith<$Res> {
   $Res call(
       {String key,
       String name,
-      String? nameKana,
+      String nameKana,
       String? givenNameKana,
       int? age,
       DateTime? birthDay,
@@ -128,7 +128,7 @@ abstract class $LilyModelCopyWith<$Res> {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -188,7 +188,7 @@ class _$LilyModelCopyWithImpl<$Res> implements $LilyModelCopyWith<$Res> {
       nameKana: nameKana == freezed
           ? _value.nameKana
           : nameKana // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       givenNameKana: givenNameKana == freezed
           ? _value.givenNameKana
           : givenNameKana // ignore: cast_nullable_to_non_nullable
@@ -224,7 +224,7 @@ class _$LilyModelCopyWithImpl<$Res> implements $LilyModelCopyWith<$Res> {
       grade: grade == freezed
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       legion: legion == freezed
           ? _value.legion
           : legion // ignore: cast_nullable_to_non_nullable
@@ -282,7 +282,7 @@ abstract class _$LilyModelCopyWith<$Res> implements $LilyModelCopyWith<$Res> {
   $Res call(
       {String key,
       String name,
-      String? nameKana,
+      String nameKana,
       String? givenNameKana,
       int? age,
       DateTime? birthDay,
@@ -291,7 +291,7 @@ abstract class _$LilyModelCopyWith<$Res> implements $LilyModelCopyWith<$Res> {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -352,7 +352,7 @@ class __$LilyModelCopyWithImpl<$Res> extends _$LilyModelCopyWithImpl<$Res>
       nameKana: nameKana == freezed
           ? _value.nameKana
           : nameKana // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       givenNameKana: givenNameKana == freezed
           ? _value.givenNameKana
           : givenNameKana // ignore: cast_nullable_to_non_nullable
@@ -388,7 +388,7 @@ class __$LilyModelCopyWithImpl<$Res> extends _$LilyModelCopyWithImpl<$Res>
       grade: grade == freezed
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       legion: legion == freezed
           ? _value.legion
           : legion // ignore: cast_nullable_to_non_nullable
@@ -443,7 +443,7 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
   const _$_LilyModel(
       {required this.key,
       required this.name,
-      this.nameKana,
+      required this.nameKana,
       this.givenNameKana,
       this.age,
       this.birthDay,
@@ -473,7 +473,7 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
   @override
   final String name;
   @override
-  final String? nameKana;
+  final String nameKana;
   @override
   final String? givenNameKana;
   @override
@@ -491,7 +491,7 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
   @override
   final String? garden;
   @override
-  final String? grade;
+  final int? grade;
   @override
   final String? legion;
   @override
@@ -657,7 +657,7 @@ abstract class _LilyModel implements LilyModel {
   const factory _LilyModel(
       {required String key,
       required String name,
-      String? nameKana,
+      required String nameKana,
       String? givenNameKana,
       int? age,
       DateTime? birthDay,
@@ -666,7 +666,7 @@ abstract class _LilyModel implements LilyModel {
       bool? isBoosted,
       String? boostedSkill,
       String? garden,
-      String? grade,
+      int? grade,
       String? legion,
       String? legionJobTitle,
       String? position,
@@ -687,7 +687,7 @@ abstract class _LilyModel implements LilyModel {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
-  String? get nameKana => throw _privateConstructorUsedError;
+  String get nameKana => throw _privateConstructorUsedError;
   @override
   String? get givenNameKana => throw _privateConstructorUsedError;
   @override
@@ -705,7 +705,7 @@ abstract class _LilyModel implements LilyModel {
   @override
   String? get garden => throw _privateConstructorUsedError;
   @override
-  String? get grade => throw _privateConstructorUsedError;
+  int? get grade => throw _privateConstructorUsedError;
   @override
   String? get legion => throw _privateConstructorUsedError;
   @override

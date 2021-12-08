@@ -10,7 +10,7 @@ class LilyModel with _$LilyModel {
   const factory LilyModel({
     required String key,
     required String name,
-    String? nameKana,
+    required String nameKana,
     String? givenNameKana,
     int? age,
     DateTime? birthDay,
@@ -19,7 +19,7 @@ class LilyModel with _$LilyModel {
     bool? isBoosted,
     String? boostedSkill,
     String? garden,
-    String? grade,
+    int? grade,
     String? legion,
     String? legionJobTitle,
     String? position,
