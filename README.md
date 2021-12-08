@@ -2,8 +2,9 @@
 
 ## Description
 
-This software can search for Lily, Charm, Legion, etc. that appear in "Assault Lily".
-The database uses [fvh-P/assaultlily-rdf](https://github.com/fvh-P/assaultlily-rdf), which is an "unofficial RDF of Assault Lily".
+This software can search for Lily, Charm, Legion, etc. that appear in "Assault Lily".  
+The database uses [fvh-P/assaultlily-rdf](https://github.com/fvh-P/assaultlily-rdf),
+which is an "unofficial RDF of Assault Lily".
 
 ## Current Project state
 
@@ -12,10 +13,10 @@ Currently our app includes the following features:
 |:----:|--------|------|
 |✅|Search Lily by name|User can search lily with lily's name on search box.|
 |✅|Show Lily detail information|Users can see detail information about Lily.|
-|TBD|Search Charm by name|User can edit own name, application settings.|
-|TBD|Show Charm detail information|User can edit own name, application settings.|
-|TBD|Search Legion by name|User can sign in or sign up with popular service like Google, Apple, etc.|
-|TBD|Show Legion detail information|User can sign in or sign up with popular service like Google, Apple, etc.|
+|TBD|Search Charm by name|User can search Legion with charm's name on search box.|
+|TBD|Show Charm detail information|Users can see detail information about Charm.|
+|TBD|Search Legion by name|User can search Legion with legion's name on search box.|
+|TBD|Show Legion detail information|Users can see detail information about Legion.|
 |TBD|Bookmark Lily, Charm, or Legion|Bookmark your favorite Lily, Charm, Legion.|
 |TBD|i18n support|Currently, we are planning to support Japanese and English.|
 
