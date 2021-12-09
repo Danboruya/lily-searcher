@@ -75,6 +75,9 @@ class LilyDetailView extends ConsumerWidget {
               res.nameKana ?? noInfoLbl,
             ),
           ),
+          const SizedBox(
+            height: 6,
+          ),
           const Divider(
             color: Colors.black,
             thickness: 1,

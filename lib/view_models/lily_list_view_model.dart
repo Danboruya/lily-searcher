@@ -7,9 +7,9 @@ import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 /// ViewModel for SearchList view.
-class SearchListViewModel
+class LilyListViewModel
     extends StateNotifier<AsyncValue<List<WordSearchModel>>> {
-  SearchListViewModel(this._lilySearchController, this._logger)
+  LilyListViewModel(this._lilySearchController, this._logger)
       : super(const AsyncValue.loading()) {
     searchInitLilyList();
   }

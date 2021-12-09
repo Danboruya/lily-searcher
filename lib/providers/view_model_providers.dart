@@ -3,10 +3,10 @@ import 'package:lily_searcher/models/lily/lily_model.dart';
 import 'package:lily_searcher/providers/controller_providers.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/view_models/lily_detail_view_model.dart';
-import 'package:lily_searcher/view_models/search_list_view_model.dart';
+import 'package:lily_searcher/view_models/lily_list_view_model.dart';
 
-final searchListViewModelProvider = StateNotifierProvider.autoDispose(
-  (ref) => SearchListViewModel(ref.read(lilySearchControllerProvider),
+final lilyListViewModelProvider = StateNotifierProvider.autoDispose(
+  (ref) => LilyListViewModel(ref.read(lilySearchControllerProvider),
       ref.read(loggerProvider)),
 );
 
