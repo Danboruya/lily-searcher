@@ -16,7 +16,7 @@ class LilyDetailView extends ConsumerWidget {
       return ProviderScope(
         overrides: [
           lilyDetailViewModelProvider
-              .overrideAs((watch) => lilyDetailViewModelFamily(lilyModel)),
+              .overrideWithProvider(lilyDetailViewModelFamily(lilyModel)),
         ],
         child: const LilyDetailView(),
       );
@@ -24,10 +24,11 @@ class LilyDetailView extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final lilyDetailViewMode = watch(lilyDetailViewModelProvider);
-    final lilyDetailViewModelState = watch(lilyDetailViewMode.notifier);
-    final logger = watch(loggerProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final lilyDetailViewModel = ref.watch(lilyDetailViewModelProvider);
+    final lilyDetailViewModelState =
+        ref.watch(lilyDetailViewModelProvider.notifier);
+    final logger = ref.watch(loggerProvider);
 
     return Scaffold(
       appBar: AppBar(

@@ -6,9 +6,9 @@ class ThemeSelectView extends ConsumerWidget {
   const ThemeSelectView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final themeSelector = watch(themeSelectorProvider.notifier);
-    final themeSelectState = watch(themeSelectorProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeSelector = ref.watch(themeSelectorProvider.notifier);
+    final themeSelectState = ref.watch(themeSelectorProvider);
     bool isSwitched = themeSelectState == ThemeMode.dark ? true : false;
 
     return Drawer(

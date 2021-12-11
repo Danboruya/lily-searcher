@@ -8,11 +8,11 @@ class LilyListWidget extends ConsumerWidget {
   const LilyListWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final lilyListViewModelNotifier = watch(lilyListViewModelProvider.notifier);
-    final lilyListViewModelState = watch(lilyListViewModelProvider);
-    final logger = watch(loggerProvider);
-    final businessException = watch(businessExceptionProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lilyListViewModelNotifier = ref.watch(lilyListViewModelProvider.notifier);
+    final lilyListViewModelState = ref.watch(lilyListViewModelProvider);
+    final logger = ref.watch(loggerProvider);
+    final businessException = ref.watch(businessExceptionProvider);
 
     return SafeArea(
       child: Column(
@@ -20,7 +20,7 @@ class LilyListWidget extends ConsumerWidget {
           Padding(
             padding:
                 const EdgeInsets.only(top: 14, right: 16, bottom: 0, left: 16),
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 hintText: '検索したいリリィ名を入力してください',
                 border: const OutlineInputBorder(),
@@ -30,10 +30,13 @@ class LilyListWidget extends ConsumerWidget {
                   icon: const Icon(Icons.search),
                 ),
               ),
+              initialValue: lilyListViewModelNotifier.searchWord,
               onChanged: (String? word) =>
                   lilyListViewModelNotifier.searchWord = word ?? "",
-              onSubmitted: (_) =>
-                  lilyListViewModelNotifier.searchLilyWithWord(),
+              textInputAction: TextInputAction.search,
+              onFieldSubmitted: (_) => {
+                lilyListViewModelNotifier.searchLilyWithWord(),
+              },
               autofocus: false,
             ),
           ),

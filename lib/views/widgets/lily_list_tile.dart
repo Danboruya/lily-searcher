@@ -29,7 +29,8 @@ Widget repositoryTile(
           {
             await showDialog(
               context: context,
-              builder: (BuildContext context) => exceptionDialog(context, null),
+              builder: (BuildContext context) =>
+                  exceptionDialog(context, businessException, null),
             ),
           }
         else

@@ -1,14 +1,23 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lily_searcher/models/lily/lily_model.dart';
+import 'package:lily_searcher/models/word_search/word_search_model.dart';
 import 'package:lily_searcher/providers/controller_providers.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/view_models/lily_detail_view_model.dart';
 import 'package:lily_searcher/view_models/lily_list_view_model.dart';
 
-final lilyListViewModelProvider = StateNotifierProvider.autoDispose(
-  (ref) => LilyListViewModel(ref.read(lilySearchControllerProvider),
-      ref.read(loggerProvider)),
+final lilyListViewModelProvider = StateNotifierProvider<
+    LilyListViewModel, AsyncValue<List<WordSearchModel>>>(
+  (ref) => LilyListViewModel(
+    ref.read(lilySearchControllerProvider),
+    ref.read(loggerProvider),
+    ref.read(businessExceptionProvider),
+  ),
 );
+
+// final lilyListViewModelFutureProvider = FutureProvider((ref) async {
+//   return await ref.watch(lilyListViewModelProvider.future);
+// });
 
 final lilyDetailViewModelFamily =
     StateNotifierProvider.family<LilyDetailViewModel, LilyModel?, LilyModel?>(
@@ -17,5 +26,6 @@ final lilyDetailViewModelFamily =
 );
 
 final lilyDetailViewModelProvider =
-    ScopedProvider<StateNotifierProvider<LilyDetailViewModel, LilyModel?>>(
-        (ref) => throw Error());
+    StateNotifierProvider<LilyDetailViewModel, LilyModel?>(
+  (ref) => throw Error(),
+);

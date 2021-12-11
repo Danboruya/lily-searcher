@@ -22,15 +22,16 @@ Currently our app includes the following features:
 
 ## Requirement
 
-* Flutter 2.5.1 Stable channel or later
-* flutter_hooks: ^0.17.0
-* hooks_riverpod: ^0.14.0+4
-* freezed_annotation: ^0.14.3
-* simple_logger: ^1.8.1
+* Flutter: 2.8.0 Stable channel or later
+* Dart SDK: 2.15.0 stable or later
+* flutter_hooks: ^0.18.0
+* hooks_riverpod: ^1.0.2
+* freezed_annotation: ^1.0.0
+* simple_logger: ^1.9.0
 * http: ^0.13.3
-* intl: ^0.17.0
+* freezed: ^1.0.2+1
 * build_runner: ^2.1.2
-* json_serializable: ^5.0.1
+* json_serializable: ^6.1.1
 * shared_preferences: ^2.0.8
 
 See `pubspec.yml` for details.
