@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lily_searcher/providers/core_providers.dart';
+import 'package:lily_searcher/utils/business_exception.dart';
 
-Widget exceptionDialog(BuildContext context, Function? func) {
+Widget exceptionDialog(
+    BuildContext context, BusinessException businessException, Function? func) {
   return AlertDialog(
-    title: Text(context.read(businessExceptionProvider).title),
-    content: Text(context.read(businessExceptionProvider).message),
+    title: Text(businessException.title),
+    content: Text(businessException.message),
     actions: [
       SimpleDialogOption(
         child: const Text('OK'),

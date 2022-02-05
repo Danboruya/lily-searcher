@@ -72,7 +72,7 @@ class _$LilyModelTearOff {
     );
   }
 
-  LilyModel fromJson(Map<String, Object> json) {
+  LilyModel fromJson(Map<String, Object?> json) {
     return LilyModel.fromJson(json);
   }
 }
@@ -553,94 +553,66 @@ class _$_LilyModel with DiagnosticableTreeMixin implements _LilyModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LilyModel &&
-            (identical(other.key, key) ||
-                const DeepCollectionEquality().equals(other.key, key)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.nameKana, nameKana) ||
-                const DeepCollectionEquality()
-                    .equals(other.nameKana, nameKana)) &&
-            (identical(other.givenNameKana, givenNameKana) ||
-                const DeepCollectionEquality()
-                    .equals(other.givenNameKana, givenNameKana)) &&
-            (identical(other.age, age) ||
-                const DeepCollectionEquality().equals(other.age, age)) &&
-            (identical(other.birthDay, birthDay) ||
-                const DeepCollectionEquality()
-                    .equals(other.birthDay, birthDay)) &&
-            (identical(other.rareSkill, rareSkill) ||
-                const DeepCollectionEquality()
-                    .equals(other.rareSkill, rareSkill)) &&
-            (identical(other.subSkill, subSkill) ||
-                const DeepCollectionEquality()
-                    .equals(other.subSkill, subSkill)) &&
-            (identical(other.isBoosted, isBoosted) ||
-                const DeepCollectionEquality()
-                    .equals(other.isBoosted, isBoosted)) &&
-            (identical(other.boostedSkill, boostedSkill) ||
-                const DeepCollectionEquality()
-                    .equals(other.boostedSkill, boostedSkill)) &&
-            (identical(other.garden, garden) ||
-                const DeepCollectionEquality().equals(other.garden, garden)) &&
-            (identical(other.grade, grade) ||
-                const DeepCollectionEquality().equals(other.grade, grade)) &&
-            (identical(other.legion, legion) ||
-                const DeepCollectionEquality().equals(other.legion, legion)) &&
-            (identical(other.legionJobTitle, legionJobTitle) ||
-                const DeepCollectionEquality()
-                    .equals(other.legionJobTitle, legionJobTitle)) &&
-            (identical(other.position, position) ||
-                const DeepCollectionEquality()
-                    .equals(other.position, position)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.height, height) ||
-                const DeepCollectionEquality().equals(other.height, height)) &&
-            (identical(other.weight, weight) ||
-                const DeepCollectionEquality().equals(other.weight, weight)) &&
-            (identical(other.bloodType, bloodType) ||
-                const DeepCollectionEquality()
-                    .equals(other.bloodType, bloodType)) &&
-            (identical(other.lifeStatus, lifeStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.lifeStatus, lifeStatus)) &&
-            (identical(other.charm, charm) ||
-                const DeepCollectionEquality().equals(other.charm, charm)) &&
-            (identical(other.birthPlace, birthPlace) ||
-                const DeepCollectionEquality()
-                    .equals(other.birthPlace, birthPlace)) &&
-            (identical(other.anotherName, anotherName) ||
-                const DeepCollectionEquality()
-                    .equals(other.anotherName, anotherName)));
+        (other.runtimeType == runtimeType &&
+            other is _LilyModel &&
+            const DeepCollectionEquality().equals(other.key, key) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.nameKana, nameKana) &&
+            const DeepCollectionEquality()
+                .equals(other.givenNameKana, givenNameKana) &&
+            const DeepCollectionEquality().equals(other.age, age) &&
+            const DeepCollectionEquality().equals(other.birthDay, birthDay) &&
+            const DeepCollectionEquality().equals(other.rareSkill, rareSkill) &&
+            const DeepCollectionEquality().equals(other.subSkill, subSkill) &&
+            const DeepCollectionEquality().equals(other.isBoosted, isBoosted) &&
+            const DeepCollectionEquality()
+                .equals(other.boostedSkill, boostedSkill) &&
+            const DeepCollectionEquality().equals(other.garden, garden) &&
+            const DeepCollectionEquality().equals(other.grade, grade) &&
+            const DeepCollectionEquality().equals(other.legion, legion) &&
+            const DeepCollectionEquality()
+                .equals(other.legionJobTitle, legionJobTitle) &&
+            const DeepCollectionEquality().equals(other.position, position) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.height, height) &&
+            const DeepCollectionEquality().equals(other.weight, weight) &&
+            const DeepCollectionEquality().equals(other.bloodType, bloodType) &&
+            const DeepCollectionEquality()
+                .equals(other.lifeStatus, lifeStatus) &&
+            const DeepCollectionEquality().equals(other.charm, charm) &&
+            const DeepCollectionEquality()
+                .equals(other.birthPlace, birthPlace) &&
+            const DeepCollectionEquality()
+                .equals(other.anotherName, anotherName));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(key) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(nameKana) ^
-      const DeepCollectionEquality().hash(givenNameKana) ^
-      const DeepCollectionEquality().hash(age) ^
-      const DeepCollectionEquality().hash(birthDay) ^
-      const DeepCollectionEquality().hash(rareSkill) ^
-      const DeepCollectionEquality().hash(subSkill) ^
-      const DeepCollectionEquality().hash(isBoosted) ^
-      const DeepCollectionEquality().hash(boostedSkill) ^
-      const DeepCollectionEquality().hash(garden) ^
-      const DeepCollectionEquality().hash(grade) ^
-      const DeepCollectionEquality().hash(legion) ^
-      const DeepCollectionEquality().hash(legionJobTitle) ^
-      const DeepCollectionEquality().hash(position) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(height) ^
-      const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(bloodType) ^
-      const DeepCollectionEquality().hash(lifeStatus) ^
-      const DeepCollectionEquality().hash(charm) ^
-      const DeepCollectionEquality().hash(birthPlace) ^
-      const DeepCollectionEquality().hash(anotherName);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(key),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(nameKana),
+        const DeepCollectionEquality().hash(givenNameKana),
+        const DeepCollectionEquality().hash(age),
+        const DeepCollectionEquality().hash(birthDay),
+        const DeepCollectionEquality().hash(rareSkill),
+        const DeepCollectionEquality().hash(subSkill),
+        const DeepCollectionEquality().hash(isBoosted),
+        const DeepCollectionEquality().hash(boostedSkill),
+        const DeepCollectionEquality().hash(garden),
+        const DeepCollectionEquality().hash(grade),
+        const DeepCollectionEquality().hash(legion),
+        const DeepCollectionEquality().hash(legionJobTitle),
+        const DeepCollectionEquality().hash(position),
+        const DeepCollectionEquality().hash(type),
+        const DeepCollectionEquality().hash(height),
+        const DeepCollectionEquality().hash(weight),
+        const DeepCollectionEquality().hash(bloodType),
+        const DeepCollectionEquality().hash(lifeStatus),
+        const DeepCollectionEquality().hash(charm),
+        const DeepCollectionEquality().hash(birthPlace),
+        const DeepCollectionEquality().hash(anotherName)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -683,51 +655,51 @@ abstract class _LilyModel implements LilyModel {
       _$_LilyModel.fromJson;
 
   @override
-  String get key => throw _privateConstructorUsedError;
+  String get key;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get nameKana => throw _privateConstructorUsedError;
+  String? get nameKana;
   @override
-  String? get givenNameKana => throw _privateConstructorUsedError;
+  String? get givenNameKana;
   @override
-  int? get age => throw _privateConstructorUsedError;
+  int? get age;
   @override
-  DateTime? get birthDay => throw _privateConstructorUsedError;
+  DateTime? get birthDay;
   @override
-  String? get rareSkill => throw _privateConstructorUsedError;
+  String? get rareSkill;
   @override
-  String? get subSkill => throw _privateConstructorUsedError;
+  String? get subSkill;
   @override
-  bool? get isBoosted => throw _privateConstructorUsedError;
+  bool? get isBoosted;
   @override
-  String? get boostedSkill => throw _privateConstructorUsedError;
+  String? get boostedSkill;
   @override
-  String? get garden => throw _privateConstructorUsedError;
+  String? get garden;
   @override
-  String? get grade => throw _privateConstructorUsedError;
+  String? get grade;
   @override
-  String? get legion => throw _privateConstructorUsedError;
+  String? get legion;
   @override
-  String? get legionJobTitle => throw _privateConstructorUsedError;
+  String? get legionJobTitle;
   @override
-  String? get position => throw _privateConstructorUsedError;
+  String? get position;
   @override
-  String? get type => throw _privateConstructorUsedError;
+  String? get type;
   @override
-  double? get height => throw _privateConstructorUsedError;
+  double? get height;
   @override
-  double? get weight => throw _privateConstructorUsedError;
+  double? get weight;
   @override
-  String? get bloodType => throw _privateConstructorUsedError;
+  String? get bloodType;
   @override
-  String? get lifeStatus => throw _privateConstructorUsedError;
+  String? get lifeStatus;
   @override
-  String? get charm => throw _privateConstructorUsedError;
+  String? get charm;
   @override
-  String? get birthPlace => throw _privateConstructorUsedError;
+  String? get birthPlace;
   @override
-  String? get anotherName => throw _privateConstructorUsedError;
+  String? get anotherName;
   @override
   @JsonKey(ignore: true)
   _$LilyModelCopyWith<_LilyModel> get copyWith =>
