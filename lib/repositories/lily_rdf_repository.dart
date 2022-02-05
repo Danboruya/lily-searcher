@@ -26,6 +26,7 @@ class LilyRdfRepository implements ILilyRdfRepository {
         '  FILTER(CONTAINS(?nameKana,"$queryWord") || CONTAINS(?name, "$queryWord"))');
     sb.writeln('  FILTER(lang(?name)="ja")');
     sb.writeln('}');
+    sb.writeln('ORDER BY ?name');
 
     String query = sb.toString();
     var queryHeader = 'https://lily.fvhp.net/sparql/query';

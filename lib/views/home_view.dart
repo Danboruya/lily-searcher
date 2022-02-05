@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lily_searcher/providers/core_providers.dart';
 import 'package:lily_searcher/utils/enums.dart';
-import 'package:lily_searcher/views/lily_list.dart';
-import 'package:lily_searcher/views/theme_select_view.dart';
+import 'package:lily_searcher/views/charm_list_view.dart';
+import 'package:lily_searcher/views/lily_list_view.dart';
+import 'package:lily_searcher/views/app_config_view.dart';
 
 class HomeView extends ConsumerWidget {
   HomeView({Key? key}) : super(key: key);
   final _tab = <Widget>[
     const LilyListWidget(),
-    const Text('Charm'),
+    const CharmListWidget(),
     const Text('Legion')
   ];
 
@@ -23,7 +24,7 @@ class HomeView extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Lily Searcher'),
       ),
-      drawer: const ThemeSelectView(),
+      drawer: const AppConfigView(),
       body: _tab[bottomNavigationBar.index],
       bottomNavigationBar: BottomNavigationBar(
         items: const [

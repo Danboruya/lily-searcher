@@ -38,7 +38,7 @@ class _$WordSearchModelTearOff {
     );
   }
 
-  WordSearchModel fromJson(Map<String, Object> json) {
+  WordSearchModel fromJson(Map<String, Object?> json) {
     return WordSearchModel.fromJson(json);
   }
 }
@@ -237,32 +237,25 @@ class _$_WordSearchModel
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WordSearchModel &&
-            (identical(other.uri, uri) ||
-                const DeepCollectionEquality().equals(other.uri, uri)) &&
-            (identical(other.key, key) ||
-                const DeepCollectionEquality().equals(other.key, key)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.nameKana, nameKana) ||
-                const DeepCollectionEquality()
-                    .equals(other.nameKana, nameKana)) &&
-            (identical(other.garden, garden) ||
-                const DeepCollectionEquality().equals(other.garden, garden)) &&
-            (identical(other.position, position) ||
-                const DeepCollectionEquality()
-                    .equals(other.position, position)));
+        (other.runtimeType == runtimeType &&
+            other is _WordSearchModel &&
+            const DeepCollectionEquality().equals(other.uri, uri) &&
+            const DeepCollectionEquality().equals(other.key, key) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.nameKana, nameKana) &&
+            const DeepCollectionEquality().equals(other.garden, garden) &&
+            const DeepCollectionEquality().equals(other.position, position));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(uri) ^
-      const DeepCollectionEquality().hash(key) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(nameKana) ^
-      const DeepCollectionEquality().hash(garden) ^
-      const DeepCollectionEquality().hash(position);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(uri),
+      const DeepCollectionEquality().hash(key),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(nameKana),
+      const DeepCollectionEquality().hash(garden),
+      const DeepCollectionEquality().hash(position));
 
   @JsonKey(ignore: true)
   @override
@@ -288,17 +281,17 @@ abstract class _WordSearchModel implements WordSearchModel {
       _$_WordSearchModel.fromJson;
 
   @override
-  String get uri => throw _privateConstructorUsedError;
+  String get uri;
   @override
-  String get key => throw _privateConstructorUsedError;
+  String get key;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get nameKana => throw _privateConstructorUsedError;
+  String? get nameKana;
   @override
-  String? get garden => throw _privateConstructorUsedError;
+  String? get garden;
   @override
-  String? get position => throw _privateConstructorUsedError;
+  String? get position;
   @override
   @JsonKey(ignore: true)
   _$WordSearchModelCopyWith<_WordSearchModel> get copyWith =>
