@@ -13,8 +13,8 @@ Currently our app includes the following features:
 |:----:|--------|------|
 |✅|Search Lily by name|User can search lily with lily's name on search box.|
 |✅|Show Lily detail information|Users can see detail information about Lily.|
-|TBD|Search Charm by name|User can search Legion with charm's name on search box.|
-|TBD|Show Charm detail information|Users can see detail information about Charm.|
+|✅|Search Charm by name|User can search Legion with charm's name on search box.|
+|WIP|Show Charm detail information|Users can see detail information about Charm.|
 |TBD|Search Legion by name|User can search Legion with legion's name on search box.|
 |TBD|Show Legion detail information|Users can see detail information about Legion.|
 |TBD|Bookmark Lily, Charm, or Legion|Bookmark your favorite Lily, Charm, Legion.|
