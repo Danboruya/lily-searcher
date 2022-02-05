@@ -3,19 +3,22 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lily_searcher/controllers/lily_search_controller.dart';
 import 'package:lily_searcher/models/lily/lily_model.dart';
 import 'package:lily_searcher/models/word_search/word_search_model.dart';
-import 'package:lily_searcher/providers/core_providers.dart';
+import 'package:lily_searcher/utils/business_exception.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 /// ViewModel for SearchList view.
-class SearchListViewModel
+class LilyListViewModel
     extends StateNotifier<AsyncValue<List<WordSearchModel>>> {
-  SearchListViewModel(this._lilySearchController, this._logger)
+  LilyListViewModel(
+      this._lilySearchController, this._logger, this._businessException)
       : super(const AsyncValue.loading()) {
     searchInitLilyList();
   }
 
   /// Search controller object
   final LilySearchController _lilySearchController;
+
+  final BusinessException _businessException;
 
   final SimpleLogger _logger;
 
@@ -65,10 +68,9 @@ class SearchListViewModel
     } on Exception catch (error) {
       _logger.shout(error);
       _lily = null;
-      if (context.read(businessExceptionProvider).hasException == false) {
-        context
-            .read(businessExceptionProvider)
-            .create("Failed to retrieve the data", error.toString());
+      if (_businessException.hasException == false) {
+        _businessException.create(
+            "Failed to retrieve the data", error.toString());
       }
     }
   }

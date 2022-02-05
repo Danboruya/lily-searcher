@@ -30,7 +30,7 @@ class _$RawResponseModelTearOff {
     );
   }
 
-  RawResponseModel fromJson(Map<String, Object> json) {
+  RawResponseModel fromJson(Map<String, Object?> json) {
     return RawResponseModel.fromJson(json);
   }
 }
@@ -155,18 +155,17 @@ class _$_RawResponseModel
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RawResponseModel &&
-            (identical(other.graph, graph) ||
-                const DeepCollectionEquality().equals(other.graph, graph)) &&
-            (identical(other.context, context) ||
-                const DeepCollectionEquality().equals(other.context, context)));
+        (other.runtimeType == runtimeType &&
+            other is _RawResponseModel &&
+            const DeepCollectionEquality().equals(other.graph, graph) &&
+            const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(graph) ^
-      const DeepCollectionEquality().hash(context);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(graph),
+      const DeepCollectionEquality().hash(context));
 
   @JsonKey(ignore: true)
   @override
@@ -188,9 +187,9 @@ abstract class _RawResponseModel implements RawResponseModel {
       _$_RawResponseModel.fromJson;
 
   @override
-  Map<String, dynamic> get graph => throw _privateConstructorUsedError;
+  Map<String, dynamic> get graph;
   @override
-  Map<String, dynamic> get context => throw _privateConstructorUsedError;
+  Map<String, dynamic> get context;
   @override
   @JsonKey(ignore: true)
   _$RawResponseModelCopyWith<_RawResponseModel> get copyWith =>
