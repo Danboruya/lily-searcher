@@ -22,20 +22,20 @@ Currently our app includes the following features:
 
 ## Requirement
 
-* Flutter: 2.8.0 Stable channel or later
-* Dart SDK: 2.15.0 stable or later
+* Flutter: 2.10.0 Stable channel or later
+* Dart SDK: 2.16.0 stable or later
 * flutter_hooks: ^0.18.0
 * hooks_riverpod: ^1.0.2
 * freezed_annotation: ^1.0.0
 * simple_logger: ^1.9.0
 * http: ^0.13.3
 * intl: ^0.17.0
+* kana_kit: ^2.0.0
 * package_info: ^2.0.2
 * freezed: ^1.0.2+1
 * build_runner: ^2.1.2
 * json_serializable: ^6.1.1
 * shared_preferences: ^2.0.8
-* kana_kit: ^2.0.0
 
 See `pubspec.yml` for details.
 
